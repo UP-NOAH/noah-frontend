@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>WebSAFE Documentation</title>
+	<style>
+		table {width: 100%;}
+		thead {
+			font-weight: bold;
+			text-align: center;
+		}
+		td {
+			border: 1px solid #333;
+			background: #ccc;
+			padding: 10px;
+		}
+		p {
+			margin-top: -15px;
+			margin-bottom: 15px;
+		}
+		td.first(1){
+			widht: 20px;
+		}
+	</style>
+</head>
+<body>
+	<h2>populate_websafe.py</h2>
+	<p>This file updates the WebSAFE database based from the csv files located in the csv_files folder.</p>
+	<table>
+		<thead>
+			<td class="first">Description</td>
+			<td>Function / Variable</td>
+		</thead>
+		<!-- Function 1 -->
+		<tr>
+			<td class="first">This exports the PostgreSQL database to noah_db.sql file.
+			</td>
+			<td>export_database()</td>
+		</tr>
+		<tr>
+			<td class="first">This function commits the changes to the external repository.</td>
+			<td>commit_changes_to_repo()</td>
+		</tr>
+		<tr>
+			<td class="first">This function drops the rows in the websafe tables of the database.</td>
+			<td>empty_websafe_db()</td>
+		</tr>
+		<tr>
+			<td class="first">This function populates the conveniences WebSAFE table from the csv_files/websafe_conveniences.csv.
+			</td>
+			<td>populate_conveniences()</td>
+		</tr>
+		<tr>
+			<td class="first">This function populates the economics WebSAFE table from the csv_files/websafe_economic.csv.
+			</td>
+			<td>populate_economics()</td>
+		</tr>
+		<tr>
+			<td class="first">This function populates the demographics WebSAFE table from the csv_files/websafe_demog.csv.
+			</td>
+			<td>populate_demog()</td>
+		</tr>
+		<tr>
+			<td class="first">This function populates the education WebSAFE table from the csv_files/websafe_educ.csv.
+			</td>
+			<td>populate_educ()</td>
+		</tr>
+		<tr>
+			<td class="first">This function populates the energy WebSAFE table from the 'csv_files/websafe_energy.csv'.
+			</td>
+			<td>populate_energy()</td>
+		</tr>
+		<tr>
+			<td class="first">This function populates the land tenure WebSAFE table from the csv_files/websafe_landtenure.csv.
+			</td>
+			<td>populate_landtenure()</td>
+		</tr>
+		<tr>
+			<td class="first">This function populates the rh WebSAFE table from the csv_files/websafe_rh.csv.
+			</td>
+			<td>populate_rh()</td>
+		</tr>
+		<tr>
+			<td class="first">This function populates the WASH WebSAFE table from the csv_files/websafe_wash.csv.
+			</td>
+			<td>populate_wash()</td>
+		</tr>
+	</table>
+</body>
+</html>

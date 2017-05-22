@@ -1,0 +1,196 @@
+{% extends "base.html" %}
+
+
+{% block css %}
+<link href="{{ static_url("css/reset.css") }}" rel="stylesheet" media="screen">
+<link href="{{ static_url("lib/bootstrap/css/bootstrap.min.css") }}" rel="stylesheet" media="screen">
+<link href="{{ static_url("lib/datatables/css/dataTables.bootstrap.min.css") }}" rel="stylesheet" media="screen">
+<link href="{{ static_url("css/main.css") }}" rel="stylesheet" media="screen">
+<link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,300,400italic,400,600italic,600,700italic,700,800italic,800" rel="stylesheet prefetch" type="text/css">
+<link rel="shortcut icon" type="image/ico" href="{{ static_url("img/noah-favicon.ico") }}"/>
+<style>
+#status-wrapper {
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 0px;
+}
+#list {
+    width: 100%;
+}
+.tab-content {
+    margin-top: 20px;
+}
+.modal-dialog {
+    width: 850px;
+}
+.modal-content {
+    border-radius: 0;
+    border: 4px solid #09F;
+}
+.modal h4 {
+    font-size: 24px;
+    margin: 0;
+}
+</style>
+{% end %}
+
+{% block body_wrapper %}id="status-wrapper"{% end %}
+{% block main_body %}
+<h2>Websafe Hazards and Exposures</h2>
+<div>
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#hazards" aria-controls="hazards" role="tab" data-toggle="tab">Hazards</a></li>
+    <li role="presentation"><a href="#exposures" aria-controls="exposures" role="tab" data-toggle="tab">Exposures</a></li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane fade in active" id="hazards">
+        <table id="list2" class="table table-bordered table-striped display" cellspacing="0" width="100%"></table>
+    </div>
+    <div role="tabpanel" class="tab-pane fade" id="exposures">
+        <table id="list" class="table table-bordered table-striped display" cellspacing="0" width="100%"></table>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="detailedModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4>PSA Data</h4>
+            </div>
+            <div class="modal-body">
+                <div>
+                  <!-- Nav tabs -->
+                  <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#conveniences" aria-controls="conveniences" role="tab" data-toggle="tab">Conveniences</a></li>
+                    <li role="presentation"><a href="#economic" aria-controls="economic" role="tab" data-toggle="tab">Economic</a></li>
+                    <li role="presentation"><a href="#demographic" aria-controls="demogprahic" role="tab" data-toggle="tab">Demographic</a></li>
+                    <li role="presentation"><a href="#education" aria-controls="education" role="tab" data-toggle="tab">Education</a></li>
+                    <li role="presentation"><a href="#energy" aria-controls="energy" role="tab" data-toggle="tab">Energy</a></li>
+                    <li role="presentation"><a href="#landtenure" aria-controls="landtenure" role="tab" data-toggle="tab">Land Tenure</a></li>
+                    <li role="presentation"><a href="#rh" aria-controls="rh" role="tab" data-toggle="tab">RH</a></li>
+                    <li role="presentation"><a href="#wash" aria-controls="wash" role="tab" data-toggle="tab">WASH</a></li>
+                  </ul>
+
+                  <!-- Tab panes -->
+                  <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane fade in active" id="conveniences">
+                        <table id="conveniences-table" class="table table-bordered table-striped display" cellspacing="0" width="100%"></table>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="economic">
+                        <table id="economic-table" class="table table-bordered table-striped display" cellspacing="0" width="100%"></table>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="demographic">
+                        <table id="demographic-table" class="table table-bordered table-striped display" cellspacing="0" width="100%"></table>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="education">
+                        <table id="education-table" class="table table-bordered table-striped display" cellspacing="0" width="100%"></table>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="energy">
+                        <table id="energy-table" class="table table-bordered table-striped display" cellspacing="0" width="100%"></table>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="landtenure">
+                        <table id="landtenure-table" class="table table-bordered table-striped display" cellspacing="0" width="100%"></table>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="rh">
+                        <table id="rh-table" class="table table-bordered table-striped display" cellspacing="0" width="100%"></table>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="wash">
+                        <table id="wash-table" class="table table-bordered table-striped display" cellspacing="0" width="100%"></table>
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% end %}
+
+{% block post_scripts %}
+<script src="{{ static_url('lib/datatables/js/jquery.js') }}"></script>
+<script src="{{ static_url('lib/bootstrap/js/bootstrap.min.js') }}"></script>
+<script src="{{ static_url('lib/datatables/js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ static_url('lib/datatables/js/dataTables.bootstrap.min.js') }}"></script>
+<script>
+$(document).ready(function() {
+    function getData(psgc, table) {
+        var tableId = '#' + table + '-table';
+        $.getJSON("websafe/data?table="+table+ "&mun_psgc="+psgc, function(data) {
+            var formattedData = [];
+            $.each(data, function(k,v) {
+                formattedData.push([v['verbose_name'],v['value']]);
+            });
+            $(tableId).DataTable( {
+                autoWidth: false,
+                data: formattedData,
+                columns: [
+                    { title: "Name" },
+                    { title: "Value" }
+                ],
+                destroy: true
+            } );
+        });
+    }
+
+    function initTable(table, data) {
+        var tableId = '#' + table
+        var table = $(tableId).DataTable({
+            autoWidth: false,
+            data: data,
+            columns: [
+                { title: "Category" },
+                { title: "Municipality" },
+                { title: "PSGC" },
+                { title: "Latitutde" },
+                { title: "Longitude" },
+                { title: "Resource Name" }
+            ],
+            columnDefs: [{
+                render: function ( data, type, row ) {
+                return '<a href="#">' + data + '</a>';
+                },
+                targets: 1
+            }],
+            "order": [[ 1, "asc" ]]
+        });
+        $(tableId + ' tbody').on('click', 'tr', function () {
+            var data = table.row( this ).data();
+            var tables = ['conveniences', 'economic', 'demographic',
+                          'education', 'energy', 'landtenure',
+                          'rh', 'wash'];
+            for (i in tables) {
+                getData(data[2], tables[i]);
+            }
+            $("#detailedModal").modal();
+        } );
+    }
+    $.getJSON("/exposures", function(data) {
+        var list = [];
+        $.each(data, function(k,v) {
+            $.map(v.layer_array, function(el, i) {
+                list.push([v.category, el.verbose_name, el.psgc, el.center.lat, el.center.lng, el.resource_name]);
+            });
+        });
+        initTable('list', list);
+    });
+    $.getJSON("/websafe/hazards", function(data) {
+        var list = [];
+        $.each(data, function(k,v) {
+            $.map(v.layer_array, function(el, i) {
+                list.push([v.category, el.verbose_name, el.psgc, el.center.lat, el.center.lng, el.resource_name]);
+            });
+        });
+        initTable('list2', list);
+    });
+} );
+</script>
+{% end%}

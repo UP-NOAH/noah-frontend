@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>WebSAFE Documentation</title>
+	<style>
+		table {width: 100%;}
+		thead {
+			font-weight: bold;
+			text-align: center;
+		}
+		td {
+			border: 1px solid #333;
+			background: #ccc;
+			padding: 10px;
+		}
+		p {
+			margin-top: -15px;
+			margin-bottom: 15px;
+		}
+		td.first(1){
+			widht: 20px;
+		}
+	</style>
+</head>
+<body>
+	<h2>hazard_handler.py</h2>
+	<p>The handler that returns the list of hazards shown in the WebSAFE dropdown list.</p>
+	<table>
+		<thead>
+			<td class="first">Description</td>
+			<td>Function / Variable</td>
+		</thead>
+		<!-- Function 1 -->
+		<tr>
+			<td class="first">A handler that returns the list of hazards shown in the WebSAFE dropdown list.
+			</td>
+			<td>class HazardHandler(BaseHandler){</td>
+		</tr>
+		<tr>
+			<td class="first">A dictionary for the different types of hazards.
+            The keys are integers that correspond to the database entry of the hazard.</td>
+			<td>layer_types = {...}</td>
+		</tr>
+		<tr>
+			<td class="first">This is the SQL command that queries the list of hazard maps in the database.</td>
+			<td>query = 'SELECT hazard_maps.mun_city_psgc...</td>
+		</tr>
+		<tr>
+			<td class="first">The dictionary that contains information about the hazard maps. The 'layers' key contains a list of dictionaries that contain the mun_psgc, the location of the municipality, and other information.</td>
+			<td>
+                layer = {
+                    'verbose_name': layer_types[layer_type_id],
+                    'type_id': layer_type_id,
+                    'layers': []
+                }
+        </td>
+		</tr>
+		<tr>
+			<td class="first">&nbsp;</td>
+			<td>}</td>
+		</tr>
+	</table>
+</body>
+</html>

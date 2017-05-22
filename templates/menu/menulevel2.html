@@ -1,0 +1,252 @@
+<script>
+
+function showLegend(clicked_id){
+    if(clicked_id == 'Temp'){
+        document.getElementById('rain-img').style.display='none';
+        document.getElementById('humidity-img').style.display='none';
+        document.getElementById('pressure-img').style.display='none';
+        document.getElementById('3-ho-img').style.display='none';
+        document.getElementById('6-ho-img').style.display='none';
+        document.getElementById('12-h-img').style.display='none';
+        document.getElementById('24-h-img').style.display='none';
+        document.getElementById('temp-img').style.display='inline';
+    }
+    if(clicked_id == 'Pres'){
+        document.getElementById('temp-img').style.display='none';
+        document.getElementById('rain-img').style.display='none';
+        document.getElementById('humidity-img').style.display='none';
+        document.getElementById('3-ho-img').style.display='none';
+        document.getElementById('6-ho-img').style.display='none';
+        document.getElementById('12-h-img').style.display='none';
+        document.getElementById('24-h-img').style.display='none';
+        document.getElementById('pressure-img').style.display='inline';
+    }
+    if(clicked_id == 'Humi'){
+        document.getElementById('temp-img').style.display='none';
+        document.getElementById('rain-img').style.display='none';
+        document.getElementById('pressure-img').style.display='none';
+        document.getElementById('3-ho-img').style.display='none';
+        document.getElementById('6-ho-img').style.display='none';
+        document.getElementById('12-h-img').style.display='none';
+        document.getElementById('24-h-img').style.display='none';
+        document.getElementById('humidity-img').style.display='inline';
+    }
+    if(clicked_id == '1-ho'){
+        document.getElementById('temp-img').style.display='none';
+        document.getElementById('pressure-img').style.display='none';
+        document.getElementById('humidity-img').style.display='none';
+        document.getElementById('3-ho-img').style.display='none';
+        document.getElementById('6-ho-img').style.display='none';
+        document.getElementById('12-h-img').style.display='none';
+        document.getElementById('24-h-img').style.display='none';
+        document.getElementById('rain-img').style.display='inline';
+    }
+    if(clicked_id == '3-ho'){
+        document.getElementById('temp-img').style.display='none';
+        document.getElementById('pressure-img').style.display='none';
+        document.getElementById('humidity-img').style.display='none';
+        document.getElementById('rain-img').style.display='none';
+        document.getElementById('6-ho-img').style.display='none';
+        document.getElementById('12-h-img').style.display='none';
+        document.getElementById('24-h-img').style.display='none';
+        document.getElementById('3-ho-img').style.display='inline';
+    }
+    if(clicked_id == '6-ho'){
+        document.getElementById('temp-img').style.display='none';
+        document.getElementById('pressure-img').style.display='none';
+        document.getElementById('humidity-img').style.display='none';
+        document.getElementById('rain-img').style.display='none';
+        document.getElementById('3-ho-img').style.display='none';
+        document.getElementById('12-h-img').style.display='none';
+        document.getElementById('24-h-img').style.display='none';
+        document.getElementById('6-ho-img').style.display='inline';
+    }
+    if(clicked_id == '12-h'){
+        document.getElementById('temp-img').style.display='none';
+        document.getElementById('pressure-img').style.display='none';
+        document.getElementById('humidity-img').style.display='none';
+        document.getElementById('rain-img').style.display='none';
+        document.getElementById('3-ho-img').style.display='none';
+        document.getElementById('6-ho-img').style.display='none';
+        document.getElementById('24-h-img').style.display='none';
+        document.getElementById('12-h-img').style.display='inline';
+    }
+    if(clicked_id == '24-h'){
+        document.getElementById('temp-img').style.display='none';
+        document.getElementById('pressure-img').style.display='none';
+        document.getElementById('humidity-img').style.display='none';
+        document.getElementById('rain-img').style.display='none';
+        document.getElementById('3-ho-img').style.display='none';
+        document.getElementById('6-ho-img').style.display='none';
+        document.getElementById('12-h-img').style.display='none';
+        document.getElementById('24-h-img').style.display='inline';
+    }
+}
+
+function showLegend2(clicked_id){
+
+    if(clicked_id == 'Cumulative Rainfall (1hr)'){
+        document.getElementById('1hr-img').style.display='inline';
+        document.getElementById('3hr-img').style.display='none';
+        document.getElementById('6hr-img').style.display='none';
+        document.getElementById('12hr-img').style.display='none';
+    }
+    if(clicked_id == 'Cumulative Rainfall (3hr)'){
+        document.getElementById('1hr-img').style.display='none';
+        document.getElementById('3hr-img').style.display='inline';
+        document.getElementById('6hr-img').style.display='none';
+        document.getElementById('12hr-img').style.display='none';
+    }
+    if(clicked_id == 'Cumulative Rainfall (6hr)'){
+        document.getElementById('1hr-img').style.display='none';
+        document.getElementById('3hr-img').style.display='none';
+        document.getElementById('6hr-img').style.display='inline';
+        document.getElementById('12hr-img').style.display='none';
+    }
+    if(clicked_id == 'Cumulative Rainfall (12hr)'){
+        document.getElementById('1hr-img').style.display='none';
+        document.getElementById('3hr-img').style.display='none';
+        document.getElementById('6hr-img').style.display='none';
+        document.getElementById('12hr-img').style.display='inline';
+    }
+    if(clicked_id == 'Rainfall Estimate (GSMAP)'){
+        document.getElementById('1hr-img').style.display='none';
+        document.getElementById('3hr-img').style.display='none';
+        document.getElementById('6hr-img').style.display='none';
+        document.getElementById('12hr-img').style.display='none';
+    }
+    if(clicked_id == 'Satellite Image (Himawari)'){
+        document.getElementById('1hr-img').style.display='none';
+        document.getElementById('3hr-img').style.display='none';
+        document.getElementById('6hr-img').style.display='none';
+        document.getElementById('12hr-img').style.display='none';
+    }
+}
+
+var indexx =0;
+</script>
+<div id="menulevel2">
+    <div class="content">
+        <a class="return" href="#/" title="Close Side Bar"></a>
+
+            <!-- Menu Title -->
+            <h4>
+                <a ng-href="#/{{! component.tag}}/all" ng-bind="component.name" title="Go Back to {{! component.tag }}"></a>
+            </h4>
+
+            <!-- Menu Sections -->
+            <div class="menulevel2-list" ng-if="component.name != 'Flood Hazards' && component.name != 'Storm Surge Advisory'">
+                <ul ng-if="component.name != 'Contour' && component.name != 'Satellite'">
+                    <li ng-repeat="sub_section in component.data" 
+                        tooltip-placement="right"
+                        tooltip="{{! sub_section.sub_section_desc }}"
+                        class="tooltipli tooltip_menulevel2">
+                        <div ng-if="sub_section.sub_section_name == '7-Day Weather Forecast'">
+                            <a href="" id="{{! sub_section.sub_section_name | limitTo : 4}}" ng-click="addToMap($index)" data-toggle="modal" data-target="#myModal">{{! sub_section.sub_section_name }}</a>
+                        </div>
+                        <div ng-if="sub_section.sub_section_name != '7-Day Weather Forecast'">
+                            <a href="" id="{{! sub_section.sub_section_name | limitTo : 4}}" ng-click="addToMap($index)">{{! sub_section.sub_section_name }}</a>
+                        </div>
+
+                    </li>
+                </ul>
+
+                <ul ng-if="component.name == 'Contour'">
+                    <li ng-repeat="sub_section in component.data" 
+                        tooltip-placement="right"
+                        tooltip="{{! sub_section.sub_section_desc }}"
+                        class="tooltipli tooltip_menulevel2">
+
+                        <a href="" onClick="showLegend(this.id)" id="{{! sub_section.sub_section_name | limitTo : 4}}" ng-click="addToMap($index)">{{! sub_section.sub_section_name }}</a>
+                    </li>
+                </ul>
+
+                <ul ng-if="component.name == 'Satellite'">
+                    <li ng-repeat="sub_section in component.data"
+                        tooltip-placement="right"
+                        tooltip="{{! sub_section.sub_section_desc }}"
+                        class="tooltipli tooltip_menulevel2">
+
+                        <a href="" onClick="showLegend2(this.id)" id="{{! sub_section.sub_section_name }}" ng-click="addToMap($index)">{{! sub_section.sub_section_name }}</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="menulevel2-list" ng-if="component.name == 'Flood Hazards' || component.name == 'Storm Surge Advisory'" ng-controller="LocCtrl">
+                <div>
+                    <select class="form-control" ng-model="selectedRegion" ng-options="region.name for region in regions">
+                        <option value="">-- Region --</option>
+                    </select>
+                </div>
+                <!-- <div ng-hide="component.name == 'Alluvial Fan'"> -->
+                <div>
+                    <select class="form-control" ng-disabled="!selectedRegion" ng-model="selectedProvince" ng-options="province.name for province in filteredProvinces">
+                        <option value="" ng-bind="selectProvinceStr"></option>
+                    </select>
+                </div>
+                <div>
+                    <select class="form-control" ng-disabled="!selectedProvince" ng-model="selectedMunicipal" ng-options="municipal.name for municipal in filteredMunicipals">
+                        <option value="">-- Municipal --</option>
+                    </select>
+                </div>
+                <div ng-hide="component.tag == 'landslide'">
+                    <select class="form-control" ng-disabled="!selectedMunicipal" ng-model="selectedFloodMap" ng-options="floodmap.name for floodmap in filteredFloodMaps" ng-click="addToMap(selectedFloodMap)">
+                        <option value="" ng-bind="returnRateStr"></option>
+                    </select>
+                </div>
+
+            </div>
+
+            <div id="legend">
+                <img ng-if="component.name != 'Flood Reports' && component.tag == 'flood' || component.tag == 'landslide' || component.tag == 'stormsurge'" id="legend_img" class="img-responsive {{! component.tag }}" alt="legend" ng-src="./static/img/legend/{{! component.tag }}.png" />
+
+                <img ng-if="component.name == 'Doppler Stations'" alt="legend" class="img-responsive doppler" src="./static/img/legend/doppler.png" />
+
+                <div id="satellitelegend" ng-if="component.name == 'Satellite'">
+                    <img style="display:none; left:50px;" ng-if="component.name == 'Satellite'" alt="legend" class="contour img-responsive" id="1hr-img" ng-src="./static/img/legend/Cumulative Rainfall (1hr).png" />
+                    <img style="display:none; left:50px;" ng-if="component.name == 'Satellite'" alt="legend" class="contour img-responsive" id="3hr-img" ng-src="./static/img/legend/Cumulative Rainfall (3hr).png" />
+                    <img style="display:none; left:50px;" ng-if="component.name == 'Satellite'" alt="legend" class="contour img-responsive" id="6hr-img" ng-src="./static/img/legend/Cumulative Rainfall (6hr).png" />
+                    <img style="display:none; left:50px;" ng-if="component.name == 'Satellite'" alt="legend" class="contour img-responsive" id="12hr-img" ng-src="./static/img/legend/Cumulative Rainfall (12hr).png" />
+                </div>
+
+                <div id="contourlegend" ng-if="component.name == 'Contour'">
+                    <img style="display:none;" ng-if="component.name == 'Contour'" alt="legend" class="contour img-responsive" id="temp-img" src="./static/img/legend/temp.png" />
+
+                    <img style="display:none;" ng-if="component.name == 'Contour'" alt="legend" class="contour img-responsive" id="rain-img" src="./static/img/legend/rain.png" />
+
+                    <img style="display:none;" ng-if="component.name == 'Contour'" alt="legend" class="contour img-responsive" id="humidity-img" src="./static/img/legend/humidity.png" />
+
+                    <img style="display:none;" ng-if="component.name == 'Contour'" alt="legend" class="contour img-responsive" id="pressure-img" src="./static/img/legend/pressure.png" />
+
+                    <img style="display:none;" ng-if="component.name == 'Contour'" alt="legend" class="contour img-responsive" id="3-ho-img" src="./static/img/legend/accumulated-rainfall-3.png" />
+
+                    <img style="display:none;" ng-if="component.name == 'Contour'" alt="legend" class="contour img-responsive" id="6-ho-img" src="./static/img/legend/accumulated-rainfall-6.png" />
+
+                    <img style="display:none;" ng-if="component.name == 'Contour'" alt="legend" class="contour img-responsive" id="12-h-img" src="./static/img/legend/accumulated-rainfall-12.png" />
+
+                    <img style="display:none;" ng-if="component.name == 'Contour'" alt="legend" class="contour img-responsive" id="24-h-img" src="./static/img/legend/accumulated-rainfall-24.png" />
+                </div>
+
+
+            </div>
+
+            <div id="boundaries-disclaimer" ng-if="component.name != 'Flood Reports' && component.name != 'River Basin Boundaries' && component.tag == 'boundary' || component.tag == 'flood' || component.tag == 'landslide' || component.tag == 'stormsurge'">
+                <p>{{! component.desc }} <br /></p>
+                <p><span style="font-weight:bold;">NOTE:</span> Administrative boundaries are from PSA (2016).<br />
+                <!--span style="font-weight:bold;">SOURCES:</span><br />
+                        - National Statistics Office<br />
+                        - PhilGIS
+                </p--></p>
+
+                <p ng-if="component.tag == 'flood'">Disclaimer: Flood Hazard maps are incomplete. Municipalities with no flood data are still being prepared</p>
+                <p ng-if="component.tag == 'landslide'">Disclaimer: Long-runout landslides (debris avalanches) are not included in the landslide hazard maps</p>
+            </div>
+            <div id="boundaries-disclaimer">
+            <p ng-if="component.name == 'River Basin Boundaries'"><span style="font-weight:bold;">Source: </span>DREAM Program Flood Monitoring Component, DOST-Project NOAH.<br /></p>
+            <p ng-if="component.tag == 'facility' || component.tag == 'ovindex' ">{{! component.desc }} <br /></p>
+            <p ng-if="component.tag == 'facility' || component.tag == 'ovindex' ">{{! component.source }} <br /></p>
+
+            </div>
+        </div>
+    </div>
+</div>

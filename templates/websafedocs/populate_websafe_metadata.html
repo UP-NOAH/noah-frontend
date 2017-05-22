@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>WebSAFE Documentation</title>
+	<style>
+		table {width: 100%;}
+		thead {
+			font-weight: bold;
+			text-align: center;
+		}
+		td {
+			border: 1px solid #333;
+			background: #ccc;
+			padding: 10px;
+		}
+		p {
+			margin-top: -15px;
+			margin-bottom: 15px;
+		}
+		td.first(1){
+			widht: 20px;
+		}
+	</style>
+</head>
+<body>
+	<h2>populate_websafe_metadata.py</h2>
+	<p>This is used to populate the WebSAFE metadata table.</p>
+	<table>
+		<thead>
+			<td class="first">Description</td>
+			<td>Function / Variable</td>
+		</thead>
+		<!-- Function 1 -->
+		<tr>
+			<td class="first">This exports the PostgreSQL database to the noah_db.sql file.
+			</td>
+			<td>export_database()</td>
+		</tr>
+		<tr>
+			<td class="first">This function commits the changes to the gitlab repository.</td>
+			<td>commit_changes_to_repo()</td>
+		</tr>
+		<tr>
+			<td class="first">This empties the entries in the metadata table of WebSAFE.</td>
+			<td>empty_metadata_db()</td>
+		</tr>
+		<tr>
+			<td class="first">This fills the metadata table of WebSAFE.
+			</td>
+			<td>def populate_metadata() {</td>
+		</tr>
+		<tr>
+			<td class="first">This forms the string to the websafe_metadata.csv file that will be used to open the said file.</td>
+			<td>f = os.path.join(PROJECT_ROOT, 'populate_data', 'csv_files/websafe_metadata.csv')</td>
+		</tr>
+		<tr>
+			<td class="first">This forms the query of the metadata to be inserted.</td>
+			<td>query = websafe_queries.metadata_insert.format(**make_dict(fields.metadata, metadata))</td>
+		</tr>
+		<tr>
+			<td class="first">&nbsp;</td>
+			<td>}</td>
+		</tr>
+	</table>
+</body>
+</html>

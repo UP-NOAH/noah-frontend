@@ -1,0 +1,440 @@
+@font-face {
+	font-family: 'icomoon';
+	src:url('fonts/icomoon.eot?-awmktx');
+	src:url('fonts/icomoon.eot?#iefix-awmktx') format('embedded-opentype'),
+		url('fonts/icomoon.woff?-awmktx') format('woff'),
+		url('fonts/icomoon.ttf?-awmktx') format('truetype'),
+		url('fonts/icomoon.svg?-awmktx#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+	font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.icon-clean_water .path1:before {
+	content: "\e600";
+	color: rgb(79, 197, 242);
+}
+.icon-clean_water .path2:before {
+	content: "\e601";
+	margin-left: -1em;
+	color: rgba(43, 57, 144, 0.5);
+}
+.icon-clean_water .path3:before {
+	content: "\e602";
+	margin-left: -1em;
+	color: rgb(39, 170, 225);
+}
+.icon-clean_water .path4:before {
+	content: "\e603";
+	margin-left: -1em;
+	color: rgba(43, 57, 144, 0.5);
+}
+.icon-clean_water .path5:before {
+	content: "\e604";
+	margin-left: -1em;
+	color: rgba(43, 57, 144, 0.5);
+}
+.icon-clean_water .path6:before {
+	content: "\e605";
+	margin-left: -1em;
+	color: rgba(43, 57, 144, 0.5);
+}
+
+.icon-drinking_water .path1:before {
+	content: "\e606";
+	color: rgb(165, 221, 234);
+}
+.icon-drinking_water .path2:before {
+	content: "\e607";
+	margin-left: -1em;
+	color: rgba(28, 117, 188, 0.100000001490116);
+}
+.icon-drinking_water .path3:before {
+	content: "\e608";
+	margin-left: -1em;
+	color: rgb(0, 89, 153);
+}
+.icon-drinking_water .path4:before {
+	content: "\e609";
+	margin-left: -1em;
+	color: rgb(0, 89, 153);
+}
+.icon-drinking_water .path5:before {
+	content: "\e60a";
+	margin-left: -1em;
+	color: rgb(0, 89, 153);
+}
+
+.icon-family_kit .path1:before {
+	content: "\e60b";
+	color: rgb(39, 170, 225);
+}
+.icon-family_kit .path2:before {
+	content: "\e60c";
+	margin-left: -1em;
+	color: rgb(39, 170, 225);
+}
+.icon-family_kit .path3:before {
+	content: "\e60d";
+	margin-left: -1em;
+	color: rgb(39, 170, 225);
+}
+.icon-family_kit .path4:before {
+	content: "\e60e";
+	margin-left: -1em;
+	color: rgb(39, 170, 225);
+}
+.icon-family_kit .path5:before {
+	content: "\e60f";
+	margin-left: -1em;
+	color: rgb(43, 57, 144);
+}
+.icon-family_kit .path6:before {
+	content: "\e610";
+	margin-left: -1em;
+	color: rgb(43, 57, 144);
+}
+.icon-family_kit .path7:before {
+	content: "\e611";
+	margin-left: -1em;
+	color: rgba(28, 117, 188, 0.5);
+}
+.icon-family_kit .path8:before {
+	content: "\e612";
+	margin-left: -1em;
+	color: rgb(28, 117, 188);
+}
+.icon-family_kit .path9:before {
+	content: "\e613";
+	margin-left: -1em;
+	color: rgb(39, 170, 225);
+}
+.icon-family_kit .path10:before {
+	content: "\e614";
+	margin-left: -1em;
+	color: rgb(39, 170, 225);
+}
+.icon-family_kit .path11:before {
+	content: "\e615";
+	margin-left: -1em;
+	color: rgb(43, 57, 144);
+}
+.icon-family_kit .path12:before {
+	content: "\e616";
+	margin-left: -1em;
+	color: rgb(39, 170, 225);
+}
+.icon-family_kit .path13:before {
+	content: "\e617";
+	margin-left: -1em;
+	color: rgb(39, 170, 225);
+}
+.icon-family_kit .path14:before {
+	content: "\e618";
+	margin-left: -1em;
+	color: rgb(43, 57, 144);
+}
+.icon-family_kit .path15:before {
+	content: "\e619";
+	margin-left: -1em;
+	color: rgb(39, 170, 225);
+}
+.icon-family_kit .path16:before {
+	content: "\e61a";
+	margin-left: -1em;
+	color: rgb(39, 170, 225);
+}
+
+.icon-people .path1:before {
+	content: "\e61b";
+	color: rgb(39, 170, 225);
+}
+.icon-people .path2:before {
+	content: "\e61c";
+	margin-left: -1em;
+	color: rgb(255, 255, 255);
+}
+.icon-people .path3:before {
+	content: "\e61d";
+	margin-left: -1em;
+	color: rgb(39, 170, 225);
+}
+.icon-people .path4:before {
+	content: "\e61e";
+	margin-left: -1em;
+	color: rgb(255, 255, 255);
+}
+.icon-people .path5:before {
+	content: "\e61f";
+	margin-left: -1em;
+	color: rgb(28, 117, 188);
+}
+.icon-people .path6:before {
+	content: "\e620";
+	margin-left: -1em;
+	color: rgb(255, 255, 255);
+}
+.icon-people .path7:before {
+	content: "\e621";
+	margin-left: -1em;
+	color: rgb(28, 117, 188);
+}
+.icon-people .path8:before {
+	content: "\e622";
+	margin-left: -1em;
+	color: rgb(255, 255, 255);
+}
+.icon-people .path9:before {
+	content: "\e623";
+	margin-left: -1em;
+	color: rgb(28, 117, 188);
+}
+.icon-people .path10:before {
+	content: "\e624";
+	margin-left: -1em;
+	color: rgb(255, 255, 255);
+}
+.icon-people .path11:before {
+	content: "\e625";
+	margin-left: -1em;
+	color: rgb(28, 117, 188);
+}
+.icon-people .path12:before {
+	content: "\e626";
+	margin-left: -1em;
+	color: rgb(255, 255, 255);
+}
+
+.icon-rice .path1:before {
+	content: "\e627";
+	color: rgb(39, 170, 225);
+}
+.icon-rice .path2:before {
+	content: "\e628";
+	margin-left: -1em;
+	color: rgba(28, 117, 188, 0.699999988079071);
+}
+.icon-rice .path3:before {
+	content: "\e629";
+	margin-left: -1em;
+	color: rgba(43, 57, 144, 0.5);
+}
+.icon-rice .path4:before {
+	content: "\e62a";
+	margin-left: -1em;
+	color: rgb(39, 170, 225);
+}
+.icon-rice .path5:before {
+	content: "\e62b";
+	margin-left: -1em;
+	color: rgba(28, 117, 188, 0.699999988079071);
+}
+.icon-rice .path6:before {
+	content: "\e62c";
+	margin-left: -1em;
+	color: rgba(43, 57, 144, 0.5);
+}
+.icon-rice .path7:before {
+	content: "\e62d";
+	margin-left: -1em;
+	color: rgb(39, 170, 225);
+}
+.icon-rice .path8:before {
+	content: "\e62e";
+	margin-left: -1em;
+	color: rgba(28, 117, 188, 0.699999988079071);
+}
+.icon-rice .path9:before {
+	content: "\e62f";
+	margin-left: -1em;
+	color: rgba(43, 57, 144, 0.5);
+}
+.icon-rice .path10:before {
+	content: "\e630";
+	margin-left: -1em;
+	color: rgb(39, 170, 225);
+}
+.icon-rice .path11:before {
+	content: "\e631";
+	margin-left: -1em;
+	color: rgba(28, 117, 188, 0.699999988079071);
+}
+.icon-rice .path12:before {
+	content: "\e632";
+	margin-left: -1em;
+	color: rgba(43, 57, 144, 0.5);
+}
+.icon-rice .path13:before {
+	content: "\e633";
+	margin-left: -1em;
+	color: rgb(39, 170, 225);
+}
+.icon-rice .path14:before {
+	content: "\e634";
+	margin-left: -1em;
+	color: rgba(28, 117, 188, 0.699999988079071);
+}
+.icon-rice .path15:before {
+	content: "\e635";
+	margin-left: -1em;
+	color: rgba(43, 57, 144, 0.5);
+}
+.icon-rice .path16:before {
+	content: "\e636";
+	margin-left: -1em;
+	color: rgb(39, 170, 225);
+}
+.icon-rice .path17:before {
+	content: "\e637";
+	margin-left: -1em;
+	color: rgba(28, 117, 188, 0.699999988079071);
+}
+.icon-rice .path18:before {
+	content: "\e638";
+	margin-left: -1em;
+	color: rgba(43, 57, 144, 0.5);
+}
+.icon-rice .path19:before {
+	content: "\e639";
+	margin-left: -1em;
+	color: rgb(39, 170, 225);
+}
+.icon-rice .path20:before {
+	content: "\e63a";
+	margin-left: -1em;
+	color: rgba(28, 117, 188, 0.699999988079071);
+}
+.icon-rice .path21:before {
+	content: "\e63b";
+	margin-left: -1em;
+	color: rgba(43, 57, 144, 0.5);
+}
+.icon-rice .path22:before {
+	content: "\e63c";
+	margin-left: -1em;
+	color: rgb(39, 170, 225);
+}
+.icon-rice .path23:before {
+	content: "\e63d";
+	margin-left: -1em;
+	color: rgba(28, 117, 188, 0.699999988079071);
+}
+.icon-rice .path24:before {
+	content: "\e63e";
+	margin-left: -1em;
+	color: rgba(43, 57, 144, 0.5);
+}
+.icon-rice .path25:before {
+	content: "\e63f";
+	margin-left: -1em;
+	color: rgb(39, 170, 225);
+}
+.icon-rice .path26:before {
+	content: "\e640";
+	margin-left: -1em;
+	color: rgba(28, 117, 188, 0.699999988079071);
+}
+.icon-rice .path27:before {
+	content: "\e641";
+	margin-left: -1em;
+	color: rgba(43, 57, 144, 0.5);
+}
+.icon-rice .path28:before {
+	content: "\e642";
+	margin-left: -1em;
+	color: rgb(39, 170, 225);
+}
+.icon-rice .path29:before {
+	content: "\e643";
+	margin-left: -1em;
+	color: rgba(28, 117, 188, 0.600000023841858);
+}
+.icon-rice .path30:before {
+	content: "\e644";
+	margin-left: -1em;
+	color: rgb(39, 170, 225);
+}
+.icon-rice .path31:before {
+	content: "\e645";
+	margin-left: -1em;
+	color: rgba(28, 117, 188, 0.5);
+}
+.icon-rice .path32:before {
+	content: "\e646";
+	margin-left: -1em;
+	color: rgb(39, 170, 225);
+}
+.icon-rice .path33:before {
+	content: "\e647";
+	margin-left: -1em;
+	color: rgba(28, 117, 188, 0.5);
+}
+
+.icon-toilet .path1:before {
+	content: "\e648";
+	color: rgb(255, 255, 255);
+}
+.icon-toilet .path2:before {
+	content: "\e649";
+	margin-left: -1em;
+	color: rgb(39, 170, 225);
+}
+.icon-toilet .path3:before {
+	content: "\e64a";
+	margin-left: -1em;
+	color: rgb(39, 170, 225);
+}
+.icon-toilet .path4:before {
+	content: "\e64b";
+	margin-left: -1em;
+	color: rgb(28, 117, 188);
+}
+.icon-toilet .path5:before {
+	content: "\e64c";
+	margin-left: -1em;
+	color: rgb(39, 170, 225);
+}
+.icon-toilet .path6:before {
+	content: "\e64d";
+	margin-left: -1em;
+	color: rgba(43, 57, 144, 0.699999988079071);
+}
+.icon-toilet .path7:before {
+	content: "\e64e";
+	margin-left: -1em;
+	color: rgba(28, 117, 188, 0.699999988079071);
+}
+.icon-toilet .path8:before {
+	content: "\e64f";
+	margin-left: -1em;
+	color: rgba(28, 117, 188, 0.600000023841858);
+}
+.icon-toilet .path9:before {
+	content: "\e650";
+	margin-left: -1em;
+	color: rgba(28, 117, 188, 0.600000023841858);
+}
+.icon-toilet .path10:before {
+	content: "\e651";
+	margin-left: -1em;
+	color: rgba(28, 117, 188, 0.5);
+}
+.icon-toilet .path11:before {
+	content: "\e652";
+	margin-left: -1em;
+	color: rgba(43, 57, 144, 0.5);
+}
+

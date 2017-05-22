@@ -1,0 +1,91 @@
+.menu.ng-enter,
+.menu.ng-leave {
+  opacity: 0;
+  -webkit-transition: all .6s ease;
+  -moz-transition: all .6s ease;
+  -o-transition: all .6s ease;
+  transition: all .6s ease;
+}
+.menu.ng-enter {
+  left: -200px;
+  opacity: 0;
+}
+.menu.ng-enter-active {
+  left: 60px;
+  opacity:1;
+}
+.menu.ng-leave {
+  left: 60px;
+  opacity:1;
+}
+.menu.ng-leave-active{
+  left: -200px;
+  opacity:0;
+}
+.toolbuttons,
+#menubar img {
+  -webkit-transition: top .2s ease, left .2s ease;
+  -moz-transition: top .2s ease, left .2s ease;
+  -o-transition: top .2s ease, left .2s ease;
+  transition: top .2s ease, left .2s ease;
+  position: relative;
+  top: 0px;
+  left: 0px;
+}
+.toolbuttons:hover,
+#menubar img:hover {
+  top: -2px;
+  left: -2px;
+}
+.toolbuttons:active {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  -o-box-shadow: none;
+  box-shadow: none;
+  top: 0px;
+  left: 0px;
+}
+
+#twitter_panel span {
+  display: inline-block;
+  padding-left: 100%;
+  text-indent: 0;
+  -webkit-animation: marquee 25s linear infinite;
+  -moz-animation: marquee 25s linera infinite;
+  -o-animation: marquee 25s linear infinite;
+  -ms-animation: marquee 25s linear infinite;
+  animation: marquee 25s linear infinite;
+}
+
+#twitter_panel span:hover {
+  -webkit-animation-play-state: paused;
+  -moz-animation-play-state: paused;
+  -o-animation-play-state: paused;
+  -ms-animation-play-state: paused;
+  animation-play-state: paused;
+}
+
+@-webkit-keyframes marquee {
+  0%    { -webkit-transform: translate(0, 0); }
+  100%  { -webkit-transform: translate(-100%, 0); }
+}
+
+@-moz-keyframes marquee {
+  0%    { -moz-transform: translate(0, 0); }
+  100%  { -moz-transform: translate(-100%, 0); }
+}
+
+@-o-keyframes marquee {
+  0%    { -o-transform: translate(0, 0); }
+  100%  { -o-transform: translate(-100%, 0); }
+}
+
+@-ms-keyframes marquee {
+  0%    { -ms-transform: translate(0, 0); }
+  100%  { -ms-transform: translate(-100%, 0); }
+}
+
+@keyframes marquee {
+  0%    { transform: translate(0, 0); }
+  100%  { transform: translate(-100%, 0); }
+}

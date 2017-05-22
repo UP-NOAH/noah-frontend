@@ -1,0 +1,150 @@
+<div id="row3">
+    <img src="static/img/websafe/checklist-prepare.png" height="200" usemap="#checklist-map"/>
+    <map name="checklist-map">
+      <area shape="circle" coords="250,70,16" alt="A" ng-click="showClicked('A')">
+      <area shape="circle" coords="252,111,16" alt="B" ng-click="showClicked('B')">
+      <area shape="circle" coords="816,96,16" alt="C" ng-click="showClicked('C')">
+      <area shape="circle" coords="848,96,16" alt="D" ng-click="showClicked('D')">
+      <area shape="circle" coords="881,95,16" alt="E" ng-click="showClicked('E')">
+      <area shape="circle" coords="803,179,16" alt="F" ng-click="showClicked('F')">
+      <area shape="circle" coords="1820,128,16" alt="F" ng-click="showClicked('F')">
+    </map>
+</div>
+<div id="checklist-container" ng-show="letterClicked">
+    <div class="checklist-title">
+        <span ng-show="letterClicked == 'A'">BOX A: LIST OF DIRECTIVES DURING A DISASTER</span>
+        <span ng-show="letterClicked == 'B'">BOX B: MEETING AGENDA IN CONVENING THE LDRRMC</span>
+        <span ng-show="letterClicked == 'C'">BOX C: LIST OF RESOURCES NEEDED BY CLUSTER 1 (SRR TEAM)</span>
+        <span ng-show="letterClicked == 'D'">BOX D: LIST OF RESOURCES NEEDED BY CLUSTER 2 (HUMANITARIAN TEAM)</span>
+        <span ng-show="letterClicked == 'E'">BOX E: LIST OF RESOURCES NEEDED BY CLUSTER 3 (INFORMATION AND AWARENESS TEAM)</span>
+        <span ng-show="letterClicked == 'F'">BOX F: GUIDELINES IN UTILIZING THE LDRRM FUND</span>
+    </div>
+    <div class="checklist-body">
+        <ul ng-show="letterClicked == 'A'">
+            <li>Cancellation of Travel Authorities of Personnel</li>
+            <li>Preparation of pre-disaster risk assessment</li>
+            <li>Heightening response and early warning</li>
+            <li>Monitoring typhoon path and intensity</li>
+        </ul>
+        <ul ng-show="letterClicked == 'B'">
+            <li>Typhoon path and possible impact/span</li>
+            <li>Number of possible affected communities</li>
+            <li>Incident Command System
+                <ul>
+                    <li>Identify Incident Commander</li>
+                </ul>
+            </li>
+            <li>Composition and Tasking
+                <ul>
+                    <li>Administrative and logistical support</li>
+                    <li>Security, lifeline and SRR Cluster</li>
+                    <li>Humanitarian Cluster</li>
+                    <li>Information and Awareness Cluster</li>
+                </ul>
+            </li>
+            <li>Availability of the LDRRM Fund</li>
+            <li>Prepositioning and readiness of resources</li>
+            <li>Daily briefi ng, debriefi ng updates and schedules</li>
+        </ul>
+        <ul ng-show="letterClicked == 'C'" class="two-columns">
+            <li><strong>Supplies</strong>
+                <ul>
+                    <li>First aid kits and vaccines</li>
+                    <li>Cadaver bags<li>
+                </ul>
+            </li>
+            <li><strong>Equipment</strong>
+                <ul>
+                    <li>Boats/vans/trucks/buses</li>
+                    <li>Ambulance/amphibian vehicle/backhoe/dump truck/fire trucks/crawler/tractor/scoop loader (may be borrowed from other LGUs or NGAs)</li>
+                    <li>Siren</li>
+                    <li>Megaphone</li>
+                    <li>Whistle</li>
+                    <li>Two-way radio, GPS device, and other communication equipment (consider satellite phone)</li>
+                    <li>Ropes and throw bags</li>
+                    <li>Search light</li>
+                    <li>Ladders</li>
+                    <li>Protective gears (helmet and life vest)</li>
+                    <li>Reflectorized vest</li>
+                    <li>Extrication kit (spine board, shovel, chainsaw, jack hammer or alternative digging device)</li>
+                    <li>Chainsaw, bolo, shovel, water pump</li>
+                    <li>Mobile water treatment</li>
+                    <li>Caution tape</li>
+                    <li>K9 unit (if available)</li>
+                    <li>Barricade</li>
+                </ul>
+            </li>
+            <li><strong>Stockpile</strong>
+                <ul>
+                    <li>Gasoline and extra batteries
+                    <li>Portable generator, solar-powered generator, and f ashlights
+                    <li>Potable water
+                    <li>Food packs (rice, canned goods, noodles, ready-to-eat meals)
+                </ul>
+            </li>
+        </ul>
+        <ul ng-show="letterClicked == 'D'" class="two-columns">
+            <li><strong>Supplies</strong>
+                <ul>
+                    <li>Registration logbook</li>
+                </ul>
+            </li>
+            <li><strong>Equipment</strong>
+                <ul>
+                    <li>Standby vehicles</li>
+                    <li>Megaphone</li>
+                    <li>Whistle</li>
+                    <li>Two-way radio and other communication equipment</li>
+                    <li>Flashlight</li>
+                    <li>TV or radio</li>
+                </ul>
+            </li>
+            <li><strong>Stockpile</strong>
+                <ul>
+                    <li>First aid kits/medicines</li>
+                    <li>Food packs (rice, canned goods, noodles, ready-to-eat meals)</li>
+                    <li>Potable water</li>
+                    <li>Hygiene kit (soap, shampoo, alcohol, toothbrush, toothpaste, sanitary pads, deodorant)</li>
+                    <li>Clothing (jacket, raincoat, hard hat, boots)</li>
+                    <li>Gasoline and extra batteries</li>
+                    <li>Portable generator and flashlights</li>
+                    <li>Beds and beddings</li>
+                    <li>Portable toilets</li>
+                    <li>Mosquito nets</li>
+                </ul>
+            </li>
+        </ul>
+        <ul ng-show="letterClicked == 'E'" class="two-columns">
+            <li><strong>Data and Information</strong>
+                <ul>
+                    <li>Hazard and risk maps to include Social Vulnerability Assessment, and potential flush points maps</li>
+                    <li>Directory/contact numbers of key local and national DRRM officials, TV, and radio stations, school principals/administrators</li>
+                    <li>Advisory from PAGASA</li>
+                    <li>Template of PSAs (Public Service Announcements)</li>
+                </ul>
+            </li>
+            <li><strong>Equipment</strong>
+                <ul>
+                    <li>Centralized Hotline (operated and monitored by the Command Center)</li>
+                    <li>Vehicles</li>
+                    <li>Siren/Batingaw</li>
+                    <li>Telephone/fax machine/internet connection</li>
+                    <li>Megaphone</li>
+                    <li>Two-way radio, GPS device, and other communication equipment (consider  satellite phone)</li>
+                    <li>Flashlight</li>
+                    <li>Transistor Radio (single frequency)</li>
+                </ul>
+            </li>
+            <li><strong>Stockpile</strong>
+                <ul>
+                    <li>Gasoline and extra batteries</li>
+                    <li>Portable generator and flashlights</li>
+                </ul>
+            </li>
+        </ul>
+        <ul ng-show="letterClicked == 'F'">
+            <li>Section 21 of RA No. 10121 provides that the General Fund amounting to not less than five percent (5%) of the estimated revenue from regular sources shall be set aside for LDRRM Fund. Thirty percent (30%) of the LDRRMF shall be set aside for the Quick Response Fund (QRF) and 70% for disaster prevention and mitigation, response, rehabilitation and recovery.</li>
+            <li>The release and use of the 30% QRF shall be supported by the local sanggunian declaring LGU under the state of calamity or a Presidential declaration of state of calamity upon recommendation of the NDRRMC.</li>
+        </ul>
+    </div>
+</div>

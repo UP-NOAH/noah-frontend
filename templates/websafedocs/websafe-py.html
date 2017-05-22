@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>WebSAFE Documentation</title>
+	<style>
+		table {width: 100%;}
+		thead {
+			font-weight: bold;
+			text-align: center;
+		}
+		td {
+			border: 1px solid #333;
+			background: #ccc;
+			padding: 10px;
+		}
+		p {
+			margin-top: -15px;
+			margin-bottom: 15px;
+		}
+		td.first {
+			width: 20px;
+		}
+	</style>
+</head>
+<body>
+	<h2>websafe.py</h2>
+	<p>Frontend handler for the WebSafe module</p>
+	<table>
+		<thead>
+			<td class="first">Class</td>
+			<td>Description</td>
+		</thead>
+		<tr>
+			<td class="first">WebsafeHandler</td>
+			<td>Displays the WebSAFE menu/window where the user can choose hazards and exposures to calculate possible impact and display PSA data.
+			</td>
+		</tr>
+		<tr>
+			<td class="first">StatusPageHandler</td>
+			<td>Displays the available hazard and exposure layers in table format.
+			</td>
+		</tr>
+		<tr>
+			<td class="first">ExposureListHandler</td>
+			<td>Returns json containing all available exposure layers, grouped by category (e.g. Population, Building Footprints, etc) with <i>id</i>, <i>psgc</i>, <i>center (lat, lng)</i>, <i>resource_name</i>, and <i>verbose_name</i> as keys for each layer.
+			</td>
+		</tr>
+		<tr>
+			<td class="first">HazardListHandler</td>
+			<td>Returns json containing all available hazard layers, grouped by category (e.g. 5-Year Flood, 25-Year Flood, 100-Year Flood, Stormsurge, etc) with <i>id</i>, <i>haz_type</i>, <i>psgc</i>, <i>center (lat, lng)</i>, <i>resource_name</i>, <i>verbose_name</i>, <i>province_psgc</i> and <i>province_verbose_name</i> as keys for each layer.
+			</td>
+		</tr>
+		<tr>
+			<td class="first">WebsafeHazardListHandler</td>
+			<td>Returns json containing all available hazard layers formatted specifically for the status page, grouped by category (e.g. 5-Year Flood, 25-Year Flood, 100-Year Flood, Stormsurge, etc) with <i>id</i>, <i>haz_type</i>, <i>psgc</i>, <i>center (lat, lng)</i>, <i>resource_name</i> and <i>verbose_name</i> as keys for each layer.
+			</td>
+		</tr>
+		<tr>
+			<td class="first">CalculateHandler</td>
+			<td>Calls the calculate backend handler with parameters <i>psgc</i>, <i>haz_type</i>, <i>haz_type_id</i>, and <i>exp_type_id</i> and returns corresponding impact summary and PSA data of selected municipality.
+			</td>
+		</tr>
+		<tr>
+			<td class="first">PDFHandler</td>
+			<td>Handler for generating WebSAFE report in PDF format.
+			</td>
+		</tr>
+		<tr>
+			<td class="first">WebsafeDataHandler</td>
+			<td>Takes in <i>table</i> as argument (PSA table e.g. Demographic, Conveniences, Education, Energe, WASH, etc) and <i>psgc</i> (optional) and returns json containing the specified PSA data of all or specific municipality.
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

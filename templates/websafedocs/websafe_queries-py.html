@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>WebSAFE Documentation</title>
+	<style>
+		table {width: 100%;}
+		thead {
+			font-weight: bold;
+			text-align: center;
+		}
+		td {
+			border: 1px solid #333;
+			background: #ccc;
+			padding: 10px;
+		}
+		p {
+			margin-top: -15px;
+			margin-bottom: 15px;
+		}
+		td.first(1){
+			widht: 20px;
+		}
+	</style>
+</head>
+<body>
+	<h2>websafe_queries.py</h2>
+	<p>This contains the SQL commands used to insert and delete into the WebSAFE tables. </p>
+	<table>
+		<thead>
+			<td class="first">Description</td>
+			<td>Function / Variable</td>
+		</thead>
+		<tr>
+			<td class="first">The SQL command for deleting from the conveniences table.</td>
+			<td>conveniences_delete = "DELETE FROM websafe_conveniences"</td>
+		</tr>
+		<tr>
+			<td class="first">The SQL command for deleting from the economics table.</td>
+			<td>economics_delete = "DELETE FROM websafe_economic"</td>
+		</tr>
+		<tr>
+			<td class="first">The SQL command for deleting from the demog table.</td>
+			<td>demog_delete ="DELETE FROM websafe_demographic"</td>
+		</tr>
+		<tr>
+			<td class="first">The SQL command for deleting from the education table.</td>
+			<td>educ_delete = "DELETE FROM websafe_education"</td>
+		</tr>
+		<tr>
+			<td class="first">The SQL command for deleting from the energy table.</td>
+			<td>energy_delete = "DELETE FROM websafe_energy"</td>
+		</tr>
+		<tr>
+			<td class="first">The SQL command for deleting from the landtenure table.</td>
+			<td>landtenure_delete = "DELETE FROM websafe_landtenure"</td>
+		</tr>
+		<tr>
+			<td class="first">The SQL command for deleting from the rh table.</td>
+			<td>rh_delete = "DELETE FROM websafe_rh"</td>
+		</tr>
+		<tr>
+			<td class="first">The SQL command for deleting from the wash table.</td>
+			<td>wash_delete = "DELETE FROM websafe_wash"</td>
+		</tr>
+		<tr>
+			<td class="first">The SQL command for deleting from the metadata table.</td>
+			<td>metadata_delete = "DELETE FROM websafe_metadata"</td>
+		</tr>
+		<tr>
+			<td class="first">The SQL command for inserting into the conveniences table.</td>
+			<td>conveniences_insert = """INSERT INTO websafe_conveniences...</td>
+		</tr>
+		<tr>
+			<td class="first">The SQL command for inserting into the economics table.</td>
+			<td>economics_insert = """INSERT INTO websafe_economic...</td>
+		</tr>
+		<tr>
+			<td class="first">The SQL command for inserting into the demographics table.</td>
+			<td>demog_insert = """INSERT INTO websafe_demographic...</td>
+		</tr>
+		<tr>
+			<td class="first">The SQL command for inserting into the education table.</td>
+			<td>educ_insert = """INSERT INTO websafe_education...</td>
+		</tr>
+		<tr>
+			<td class="first">The SQL command for inserting into the energy table.</td>
+			<td>energy_insert = """INSERT INTO websafe_energy...</td>
+		</tr>
+		<tr>
+			<td class="first">The SQL command for inserting into the land tenure table.</td>
+			<td>landtenure_insert = """INSERT INTO websafe_landtenure...</td>
+		</tr>
+		<tr>
+			<td class="first">The SQL command for inserting into the rh table.</td>
+			<td>rh_insert = """INSERT INTO websafe_rh...</td>
+		</tr>
+		<tr>
+			<td class="first">The SQL command for inserting into the wash table.</td>
+			<td>wash_insert = """INSERT INTO websafe_wash...</td>
+		</tr>
+		<tr>
+			<td class="first">The SQL command for inserting into the metadata table.</td>
+			<td>metadata_insert = """INSERT INTO websafe_metadata VALUES ('{TABLE}', '{FIELD}', '{CONTENT}', '{VISUALIZATION}')"""</td>
+		</tr>
+	</table>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<div id="menulevel1">
+    <div class="content">
+        <a class="return" href="#/" title="Close Side Bar"></a>
+
+        <!-- Menu Title -->
+        <h4 ng-bind="component.title"></h4>
+
+        <!-- Menu Descriptions -->
+        <p ng-bind="component.desc"></p>
+
+        <!-- Menu Sections -->
+        <ul id="sidemenu-list" ng-repeat="section in component.sections">
+            <div ng-if="section.section_tag == 'inventory'">
+                <li
+                        tooltip-placement="right"
+                        tooltip="{{! section.section_desc }}"
+                        class="tooltipli tooltip_menulevel2">
+                    <!-- <a href="#/{{! section.section_link}}/all" ng-click=""> -->
+                    <a href="#" ng-click="plotData(section.section_tag)">
+                        <span ng-bind="section.section_name"></span>
+                    </a>
+                </li>
+            </div>
+
+            <div ng-if="section.section_tag != 'inventory'">
+                <!-- Default Template -->
+                <div ng-show="section.section_link != 'sensors'">
+                    <li
+                        tooltip-placement="right"
+                        tooltip="{{! section.section_desc }}"
+                        class="tooltipli tooltip_menulevel1">
+                        <a href="#/section/{{! section.section_link}}/{{! section.section_tag}}">
+                            <span ng-bind="section.section_name"></span>
+                        </a>
+                    </li>
+                </div>
+
+                <!-- Sensors Template -->
+                <div ng-show="section.section_link == 'sensors'">
+                    <li
+                        tooltip-placement="right"
+                        tooltip="{{! section.section_desc }}"
+                        class="tooltipli tooltip_menulevel2">
+                        <a href="#" ng-click="plotData(section.section_tag)">
+                            <span ng-bind="section.section_name"></span>
+                        </a>
+                    </li>
+                </div>
+            </div>
+        </ul>
+    </div>
+</div>

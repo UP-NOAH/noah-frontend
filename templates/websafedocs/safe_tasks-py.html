@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>WebSAFE Documentation</title>
+	<style>
+		table {width: 100%;}
+		thead {
+			font-weight: bold;
+			text-align: center;
+		}
+		td {
+			border: 1px solid #333;
+			background: #ccc;
+			padding: 10px;
+		}
+		p {
+			margin-top: -15px;
+			margin-bottom: 15px;
+		}
+		td.first(1){
+			widht: 20px;
+		}
+	</style>
+</head>
+<body>
+	<h2>safe_tasks.py</h2>
+	<p>Tasks executed by the WebSAFE module.</p>
+	<table>
+		<thead>
+			<td class="first">Description</td>
+			<td>Function / Variable</td>
+		</thead>
+		<!-- Function 1 -->
+		<tr>
+			<td class="first">This deletes the files in the tmp directory.
+			</td>
+			<td>def delete_tmp()</td>
+		</tr>
+		<!-- Function 2 -->
+		<tr>
+			<td class="first">Returns a single entry from the PostgreSQL database that matches the query.
+			</td>
+			<td>def get_one_from_db()</td>
+		</tr>
+		<tr>
+			<td class="first">Returns all entries from the PostgreSQL databse that match the query.</td>
+			<td>def get_all_from_db(query)</td>
+		</tr>
+		<tr>
+			<td class="first">Calls the InaSAFE API after preprocessing layers</td>
+			<td>def calculate(layer_paths, haztype, exptype){</td>
+		</tr>
+		<tr>
+			<td class="first">Contains the exposure layer.</td>
+			<td>exp_layer = read_layer(layer_paths['exposure'])</td>
+		</tr>
+		<tr>
+			<td class="first">Contains the hazard layer.</td>
+			<td>haz_layer = read_layer(layer_paths['hazard'])</td>
+		</tr>
+		<tr>
+			<td class="first">Used to check if the datasets are not disjoint.</td>
+			<td>common_bbox = bbox_intersection( exp_layer.get_bounding_box(), haz_layer.get_bounding_box() )</td>
+		</tr>
+		<tr>
+			<td class="first">gets the exposure pixelsize to be used for clipping.</td>
+			<td>file_temp = os.popen(RASTER_SIZE.format(src=exp_layer.get_filename())) <br>
+                    file_line = file_temp.readlines() <br>
+                    pixel_size = file_line[13][14:-2].split(",") <br>
+                    pixel_width = float(pixel_size[0]) <br>
+                    pixel_length = float(pixel_size[1]) <br> 
+        </td>
+		</tr>
+		<tr>
+			<td class="first">Clipped exposure layer so that it will have the same geotransform as hazard layer.</td>
+			<td>exp_clipped = clip_layer(common_bbox, exp_layer, pixel_width, pixel_length)</td>
+		</tr>
+		<tr>
+			<td class="first">Clipped hazard layer so that it will have the same geotransform as exposure layer.</td>
+			<td>haz_clipped = clip_layer(common_bbox, haz_layer, pixel_width, pixel_length)</td>
+		</tr>
+		<tr>
+			<td class="first">Impact Function used in WebSAFE calculation.</td>
+			<td>fnc = get_impact_function(haz_dict, exp_dict)</td>
+		</tr>
+		<tr>
+			<td class="first">Call to the InaSAFE API to calculate the impact layer.</td>
+			<td>impact_layer = calculate_impact(layers, fnc, check_integrity=False)</td>
+		</tr>
+		<tr>
+			<td class="first">&nbsp;</td>
+			<td>}</td>
+		</tr>
+	</table>
+</body>
+</html>

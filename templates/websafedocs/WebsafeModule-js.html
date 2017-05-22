@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>WebSAFE Documentation</title>
+	<style>
+		table {width: 100%;}
+		thead {
+			font-weight: bold;
+			text-align: center;
+		}
+		td {
+			border: 1px solid #333;
+			background: #ccc;
+			padding: 10px;
+		}
+		p {
+			margin-top: -15px;
+			margin-bottom: 15px;
+		}
+		td.first {
+			width: 50%;
+		}
+		.text-center {
+			text-align: center;
+		}
+		td.indent {
+			padding-left: 50px;
+		}
+	</style>
+</head>
+<body>
+	<h2>WebSafeModule.js</h2>
+	<p>Angular module for websafe</p>
+	<table>
+		<thead>
+			<td class="first">Description</td>
+			<td>Function/Variable</td>
+		</thead>
+		<tr>
+			<td class="first text-center" colspan="2">ModalCtrl</td>
+		</tr>
+		<tr>
+			<td class="first">Helper function that allows server side conversion of charts to png and returns a URL corresponding to the generated image.<br /><br />
+				@param {Object} chartData - contains Highcharts options (e.g. chart type, title, series data, etc)
+			</td>
+			<td>$scope.exportChart(chartData)</td>
+		</tr>
+		<tr>
+			<td class="first">Calls the PDFHandler to generate the WebSAFE report in pdf format.
+			</td>
+			<td>$scope.viewPDf()</td>
+		</tr>
+		<tr>
+			<td class="first text-center" colspan="2">WebsafeCtrl</td>
+		</tr>
+		<tr>
+			<td class="first">A listener for every change in the layer selectors (hazard and exposure) dropdowns.<br /><br />
+				@param {Object} layer - contains layer information (e.g. layer type, psgc, layer category, etc.)
+			</td>
+			<td>$scope.layerChanged(layer)</td>
+		</tr>
+		<tr>
+			<td class="first">Calls the CalculateHandler and returns corresponding impact scenario. PSA data are also processed here. All returned data are assigned to its corresponding charts and variables.
+			</td>
+			<td>$scope.calculate() {</td>
+		</tr>
+		<tr>
+			<td class="first">Calls the WebsafeDataHandler and returns the PSA data of specified municipality <br /><br />
+				@param {String} table - A choice from 'conveniences', 'economic', 'demographic', 'education', 'energy', 'landtenure', 'rh', or 'wash'<br />
+				@param {String} psgc - municipality psgc of the selected hazard layer
+			</td>
+			<td class="indent">$scope.getPSData(table, psgc)</td>
+		</tr>
+		<tr>
+			<td class="first">The selected location in the dropdown
+			</td>
+			<td class="indent">$scope.location</td>
+		</tr>
+		<tr>
+			<td class="first">Estimated total population/building infrastractures of selected location
+			</td>
+			<td class="indent">$scope.total</td>
+		</tr>
+		<tr>
+			<td class="first">Total impact calculated by WebSAFE
+			</td>
+			<td class="indent">$scope.total_impact</td>
+		</tr>
+		<tr>
+			<td class="first">Total impact on high hazard area
+			</td>
+			<td class="indent">$scope.high</td>
+		</tr>
+		<tr>
+			<td class="first">Total impact on medium hazard area
+			</td>
+			<td class="indent">$scope.medium</td>
+		</tr>
+		<tr>
+			<td class="first">Total impact on low hazard area
+			</td>
+			<td class="indent">$scope.low</td>
+		</tr>
+		<tr>
+			<td class="first">Highcharts options for the total population affected pie chart
+			</td>
+			<td class="indent">$scope.affectedPieChart</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td class="indent"><br />//If type = population</td>
+		</tr>
+		<tr>
+			<td class="first">Needs per week
+			</td>
+			<td class="indent">
+				$scope.rice<br />
+				$scope.clean_water<br />
+				$scope.drinking_water<br />
+				$scope.toilets<br />
+				$scope.family_kits<br />
+				$scope.addtl_rice<br />
+				$scope.hygiene_packs
+			</td>
+		</tr>
+		<tr>
+			<td class="first">Age pie chart
+			</td>
+			<td class="indent">
+				$scope.youth<br />
+				$scope.adult<br />
+				$scope.elderly<br />
+				$scope.agePieChart // Options for Highcharts
+			</td>
+		</tr>
+		<tr>
+			<td class="first">Gender pie chart
+			</td>
+			<td class="indent">
+				$scope.female<br />
+				$scope.male<br />
+				$scope.genderPieChart // Options for Highcharts
+			</td>
+		</tr>
+		<tr>
+			<td class="first">PSA Data: Demographics
+			</td>
+			<td class="indent">
+				$scope.populationPyramid<br />
+				$scope.maleFemale // Gender distribution<br />
+				$scope.ageDependents
+			</td>
+		</tr>
+		<tr>
+			<td class="first">PSA Data: Conveniences
+			</td>
+			<td class="indent">
+				$scope.internetAccess // Ratio of households with internet access<br />
+				$scope.conveniences // Key value pair for conveniences pictograph
+			</td>
+		</tr>
+		<tr>
+			<td class="first">PSA Data: Education
+			</td>
+			<td class="indent">
+				$scope.literacyRate // Overall literacy rate<br />
+				$scope.literacyRateM // Male literacy rate<br />
+				$scope.literacyRateF // Female literacy rate
+			</td>
+		</tr>
+		<tr>
+			<td class="first">PSA Data: Energy
+			</td>
+			<td class="indent">
+				$scope.lightingFuel // Ratio of households using fuel for lighting<br />
+				$scope.cookingFuel // Ratio of houselds using fuel for cooking
+			</td>
+		</tr>
+		<tr>
+			<td class="first">PSA Data: WASH
+			</td>
+			<td class="indent">
+				$scope.drinkingWater // Source of water for drinking<br />
+				$scope.cookingWater // Source of water for cooking<br />
+				$scope.laundryWater // Source of water for laundry/bathing
+			</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td class="indent"><br />//If type = building infrastructure</td>
+		</tr>
+		<tr>
+			<td class="first">Number of buildings based on type
+			</td>
+			<td class="indent">
+				$scope.residential
+                $scope.government
+                $scope.hospital
+                $scope.church
+                $scope.others
+			</td>
+		</tr>
+		<tr>
+			<td class="first">Number of households based on material
+			</td>
+			<td class="indent">
+				$scope.materialsBarChart
+			</td>
+		</tr>
+		<tr>
+			<td class="first"></td>
+			<td>};</td>
+		</tr>
+	</table>
+</body>
+</html>

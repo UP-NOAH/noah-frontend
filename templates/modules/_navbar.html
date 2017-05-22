@@ -1,0 +1,39 @@
+<div class="navbar navbar-inverse navbar-fixed-top " style="z-index:2;" role="navigation">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse"
+                data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <!--<span class="logo hidden-xs"><a href="http://www.dost.gov.ph" target="_blank"><img src="{{ static_url('img/DOST_logo.png')}}" title="DOST"/></a></span>
+        <span class="logo hidden-xs"><a href="http://www.pagasa.dost.gov.ph" target="_blank"><img src="{{ static_url('img/PAGASA_logo.png')}}" title="PAGASA"/></a></span>-->
+        <span class="logo hidden-xs"><a href="http://www.up.edu.ph/" target="_blank"><img src="{{ static_url('img/updlogo.png')}}" title=""/></a></span>
+        <span class="logo "><a href="/"><img src="{{ static_url('img/NOAH_flatlogo.png')}}"/></a></span>
+        <a class="navbar-brand" href="/">Nationwide Operational Assessment of Hazards (NOAH)</a>
+        <!--<span id="beta" class="hidden-sm hidden-xs">Beta</span>-->
+    </div>
+
+    <div class="collapse navbar-collapse navbar-right">
+        <!-- <ul class="nav navbar-nav">
+            <li>
+            <div id="fb-root">
+                <div class="fb-like" data-href="https://www.facebook.com/dostnoah" data-width="5" data-layout="button" data-action="like" data-show-faces="false"></div>
+                <div class="fb-share-button" data-href="http://noah.dost.gov.ph/" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fnoah.dost.gov.ph%2F&amp;src=sdkpreparse"></a></div>
+            </div></li>
+            <li><a href="/">Home</a></li>
+            <li><a target="_blank" href="http://blog.noah.dost.gov.ph/citations">How to Cite</a></li>
+            <li><a href="/p/about">About</a></li>
+            <li><a target="_blank" href="http://blog.noah.dost.gov.ph">Blog</a></li>
+            {% if name %}
+            <li><a href="/logout" id="sign-out-link">Hi {{ name }}, Logout</a></li>
+            {% else %}
+            <li><a href="#" id="sign-in-link" data-toggle="modal" data-target="#login-div">Sign In</a></li>
+            {% end %}
+            <li><a target="_blank" href="http://noah.dost.gov.ph/downloads/">Downloads</a></li>           
+        </ul> -->
+        <button onclick="window.open('http://center.noah.up.edu.ph', '_blank')" class="nav-btn btn-primary" style="background-color: #7b1113">The UP NOAH Homepage</button>
+        <div href="#" class="nav-btn btn-primary" ng-click="tourMe()" id="tour-me-link">How to Use</div>
+    </div>
+</div>

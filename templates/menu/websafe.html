@@ -1,0 +1,645 @@
+<div class="websafe-window">
+    <a class="return" href="#/" title="Close Menu"></a>
+
+    <!-- <div class="filetree exposure-filetree"
+        tooltip-placement="bottom"
+        tooltip-trigger="onTrigger"
+        tooltip="Select exposure here">
+        <select ui-select2="exposure_selector"
+                data-placeholder="Select exposure layer"
+                ng-model="exposure.json_string"
+                ng-change="layerChanged(exposure)">
+            <option value=""></option>
+            <optgroup ng-repeat="exp in exposure_list" label="{{! exp.category }}">
+                <option ng-repeat="layer in exp.layer_array" value="{{! layer }}">
+                    {{! layer.verbose_name }}
+                </option>
+　            </optgroup>
+        </select>
+    </div> -->
+
+    <!-- <div class="filetree hazard-filetree"
+        tooltip-placement="bottom"
+        tooltip-trigger="onTrigger"
+        tooltip="Select hazard here">
+        <select ui-select2="hazard_selector"
+                data-placeholder="Select hazard layer"
+                ng-model="hazard.json_string"
+                ng-change="layerChanged(hazard)">
+            <option value=""></option>
+            <optgroup ng-repeat="haz in hazard_list" label="{{! haz.category }}">
+                <option ng-repeat="layer in haz.layer_array" value="{{! layer }}">
+                    {{! layer.verbose_name }}
+                </option>
+            </optgroup>
+        </select> </div> -->
+
+    <div class="container">
+        <!-- TODO: remove inline css -->
+        <!-- style="width:100%;padding-top:5px;" -->
+        <!-- <img ng-src="{{ static_url('img/websafe/logo.png') }}" width="160px" height="39px" style="padding-top: 5px;" /> -->
+        <div class="text-center websafe-title-container">
+            <h1 class="websafe-title">WebSAFE</h1>
+        </div>
+        <center><img src="static/img/ellipsis.gif" ng-hide="hazard_list"/></center>
+        <div class="filetree hazard-filetree"
+            tooltip-placement="bottom"
+            tooltip-trigger="onTrigger"
+            tooltip="Select hazard here"
+                ng-show="hazard_list">
+            <select ui-select2
+                    data-placeholder="Select hazard layer..."
+                    ng-model="hazard.json_string"
+                    ng-change="layerChanged(hazard)">
+                <option value=""></option>
+                <optgroup ng-repeat="haz in hazard_list" label="{{! haz.category }}">
+                    <option ng-repeat="layer in haz.layer_array" value="{{! layer }}">
+                        {{! layer.verbose_name }}, {{! layer.province_verbose_name }}
+                    </option>
+                </optgroup>
+            </select>
+        </div>
+        <div class="filetree exposure-filetree"
+            tooltip-placement="bottom"
+            tooltip-trigger="onTrigger"
+            tooltip="Select exposure here"
+                ng-show="hazard_list">
+            <select ui-select2
+                    data-placeholder="Select exposure layer..."
+                    ng-model="exposure.json_string"
+                    ng-change="layerChanged(exposure)">
+                <option value=""></option>
+                <optgroup ng-repeat="exp in exposure_list" label="{{! exp.category }}">
+                    <option ng-repeat="layer in exp.layer_array" value="{{! layer }}">
+                        {{! layer.verbose_name }}
+                    </option>
+                </optgroup>
+            </select>
+        </div>
+        <div class="text-center question-label-container">
+            <h3 class="question-label">QUESTION</h3>
+            <div>
+                <p>In the event of a <span id="hazard" ng-bind="hazard_selected">__________</span>, how many <span id="exposure" ng-bind="exposure_selected">__________</span> will <span id="impact" ng-bind="impact_selected">__________</span>.</p>
+            </div>
+        </div>
+
+        <!-- <div tooltip-placement="right"
+            tooltip-trigger="onTrigger"
+            tooltip="Select impact function here">
+            <select ui-select2
+                    data-placeholder="Select impact function"
+                    ng-model="impact.impact_function">
+                    <option ng-repeat="impact in impact_functions" value="{{! impact.value }}">{{! impact.label }}</option>
+            </select>
+        </div> -->
+
+        <div class="button_center">
+            <button class="btn btn-primary btn-sm ladda-button"
+                tooltip-placement="right"
+                tooltip-trigger="onTrigger"
+                tooltip="Start WebSAFE Calculation. This may take a while."
+                data-style="expand-left"
+                ng-click="calculate()"
+                ng-hide="resultReady">
+                <span class="ladda-label">CALCULATE</span>
+            </button>
+            <button class="btn btn-primary btn-sm" ng-click="open()" ng-show="resultReady">Show Report</button>
+        </div>
+        <div class="button_center">
+            <button class="btn btn-danger btn-sm" ng-click="init()">RESET</button>
+        </div>
+        <div id="websafe-attribution">
+            <p class="text-center">
+                WebSAFE, an impact assessment tool based on <a href="http://inasafe.org/" target="_blank">InaSAFE</a>, is a joint effort of Project NOAH and <a href="http://www.worldbank.org/" target="_blank">The World Bank</a>.
+            </p>
+        </div>
+    </div>    
+</div>
+
+<script type="text/ng-template" id="populationResults.html" class="modal fade">
+    <div class="websafe-modal">
+        <div class="modal-content">    
+            <div class="modal-body">
+                <div id="question">
+                    <div class="question">
+                        <h4>In the event of a <strong ng-bind="haz_layer_text.category"></strong> in <strong ng-bind="location"></strong>, how many <span ng-bind="exposure_text"></span> might <span ng-bind="impact_text"></span>?</h4>
+                    </div>
+                </div>            
+                <div class="bs-example bs-example-tabs" role="tabpanel">
+                    <ul class="nav nav-tabs nav-tabs-responsive nav-justified" role="tablist">
+                        <li role="presentation" class="active"><a href="#summary" aria-controls="summary" role="tab" data-toggle="tab">Summary</a></li>
+                        <li role="presentation"><a href="#needs" aria-controls="needs" role="tab" data-toggle="tab">Needs</a></li>
+                        <li role="presentation"><a href="#checklist" aria-controls="checklist" role="tab" data-toggle="tab" ng-click="initQtip()">Check Listo</a></li>
+                        <li role="presentation"><a href="#disaster-attribute2" aria-controls="disaster-attribute2" role="tab" data-toggle="tab">Risk Profile</a></li>
+                        <li role="presentation" class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                              Census Data <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li role="presentation"><a href="#demographic" aria-controls="demographic" role="tab" data-toggle="tab">Demographic</a></li>
+                                <li role="presentation"><a href="#household" aria-controls="household" role="tab" data-toggle="tab" ng-click="toggleHousehold(hazard.data.psgc)">Household</a></li>
+                                <li role="presentation"><a href="#unemployed" aria-controls="unemployed" role="tab" data-toggle="tab" ng-click="toggleUnemployment(hazard.data.psgc)">Unemployment Rate</a></li>
+                                <li role="presentation"><a href="#poverty" aria-controls="poverty" role="tab" data-toggle="tab" ng-click="togglePoverty(hazard.data.psgc)">Poverty Rate</a></li>
+                                <li role="presentation"><a href="#atRisk" aria-controls="atRisk" role="tab" data-toggle="tab" ng-click="toggleAtRisk(hazard.data.psgc)">Population at Risk</a></li>
+                                <li role="presentation"><a href="#conveniences" aria-controls="conveniences" role="tab" data-toggle="tab">Conveniences</a></li>
+                                <li role="presentation"><a href="#education" aria-controls="education" role="tab" data-toggle="tab">Education</a></li>
+                                <li role="presentation"><a href="#energy" aria-controls="energy" role="tab" data-toggle="tab">Energy</a></li>
+                                <li role="presentation"><a href="#wash" aria-controls="wash" role="tab" data-toggle="tab">Wash</a></li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane fade in active" id="summary">
+                            <div id="row1">
+                                <table>
+                                    <tr>
+                                        <td rowspan="2" id="affected">
+                                            <chart value='affectedPieChart' chart-obj='chartObj' id="affected_chart">
+                                            </chart>
+                                        </td>
+                                        <td colspan="2" id="total">
+                                            <div>
+                                                <img src="static/img/websafe/people_affected_population_100px.png" height="70" />
+                                                <div>
+                                                    <h1 ng-bind="total"></h1>
+                                                    <span>Estimated Total Population*</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><chart value='genderPieChart' chart-obj='chartObj' id="gender_chart">
+                                            </chart></td>
+                                        <td><chart value='agePieChart' chart-obj='chartObj' id="age_chart">
+                                            </chart></td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div id="estimate"><span>*Estimated population computed using current Philippine growthrate data.</span></div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="needs">
+                            <div id="needs-per-week">
+                                <h1>NEEDS PER WEEK</h1>
+                                <div class="need-row">
+                                    <div class="need">
+                                        <img src="static/img/websafe/food_NFI_rice_100px.png" />
+                                        <div>
+                                            <span class="need-amt" ng-bind="rice"></span>
+                                            <span class="need-label">Rice (kg)</span>
+                                        </div>
+                                    </div>
+                                    <div class="need">
+                                        <img src="static/img/websafe/wash_sanitation_100px.png" />
+                                        <div>
+                                            <span class="need-amt" ng-bind="clean_water"></span>
+                                            <span class="need-label">Clean Water (l)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="need-row">
+                                    <div class="need">
+                                        <img src="static/img/websafe/wash_potable_water_100px.png" />
+                                        <div>
+                                            <span class="need-amt" ng-bind="drinking_water"></span>
+                                            <span class="need-label">Drinking Water (l)</span>
+                                        </div>
+                                    </div>
+                                    <div class="need">
+                                        <img src="static/img/websafe/food_NFI_medical_supply_100px.png" />
+                                        <div>
+                                            <span class="need-amt" ng-bind="family_kits"></span>
+                                            <span class="need-label">Family Kits</span>
+                                        </div>
+                                    </div>
+                                    <div class="need">
+                                        <img src="static/img/websafe/wash_toilet_100px.png" />
+                                        <div>
+                                            <span class="need-amt" ng-bind="toilets"></span>
+                                            <span class="need-label">Toilets</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="need-row">
+                                    <div class="need">
+                                        <img src="static/img/websafe/people_pregnant_100px.png" />
+                                        <div>
+                                            <span class="need-amt" ng-bind="addtl_rice"></span>
+                                            <span class="need-label">Addt&#39;l Rice for Pregnant Women (kg)</span>
+                                        </div>
+                                    </div>
+                                    <div class="need">
+                                        <img src="static/img/websafe/people_woman_100px.png" />
+                                        <div>
+                                            <span class="need-amt" ng-bind="hygiene_packs"></span>
+                                            <span class="need-label">Hygiene Packs for Women</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="checklist">
+                            <div id="row3">
+                                <img src="static/img/websafe/checklist-prepare.png" height="200" usemap="#checklist-map"/>
+                                <map name="checklist-map">
+                                  <area shape="circle" coords="250,70,16" alt="A" ng-click="showClicked('A')">
+                                  <area shape="circle" coords="252,111,16" alt="B" ng-click="showClicked('B')">
+                                  <area shape="circle" coords="816,96,16" alt="C" ng-click="showClicked('C')">
+                                  <area shape="circle" coords="848,96,16" alt="D" ng-click="showClicked('D')">
+                                  <area shape="circle" coords="881,95,16" alt="E" ng-click="showClicked('E')">
+                                  <area shape="circle" coords="803,179,16" alt="F" ng-click="showClicked('F')">
+                                  <area shape="circle" coords="1820,128,16" alt="F" ng-click="showClicked('F')">
+                                </map>
+                            </div>
+                            <div id="logo-footnote">
+                                <img src="static/img/websafe/dilg.png" height="50" />
+                                <img src="static/img/websafe/ndrrmc.png" height="50" />
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="disaster-attribute2">
+                            <canvas id="disaster-chart2" width="300" height="300"></canvas>
+                            <!--*Dummy data only as of now-->
+                            {{! toggleDisasterChart(hazard.data.psgc,exposure.data) }}
+                            <!--No data to display as of the moment-->
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="demographic">
+                            <p>Demographic</p>
+                            <chart value='populationPyramid' chart-obj='chartObj' id="population_pyramid">
+                            </chart>
+                            <div class="pie-charts">
+                                <chart value='maleFemale' chart-obj='chartObj' id="male_female"></chart>
+                            </div>
+                            <div class="pie-charts">
+                                <chart value='ageDependents' chart-obj='chartObj' id="age_dependents"></chart>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="unemployed">
+                            <p>Unemployment Rate</p>
+                            <div class="pie-charts">
+                            <div class="title">Unemployment</div>
+                            <canvas id="unemploymentRate" width="150px" height="150px"></canvas>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="household">
+                            <p>Household Head Qualities</p>
+                            <div class="pie-charts">
+                                <div class="title">Sex</div>
+                                <canvas id="householdSex" width="150px" height="150px"></canvas>
+                            </div>
+                            <div class="pie-charts">
+                                <div class="title">Literacy Rate</div>
+                                <canvas id="householdLiteracy" width="150px" height="150px"></canvas>
+                            </div>
+                            <div class="pie-charts">
+                                <div class="title">Marital Status</div>
+                                <canvas id="householdMarital" width="150px" height="150px"></canvas>
+                            </div>
+                            <div class="pie-charts">
+                                <div class="title">Educational Attainment</div>
+                                <canvas id="householdEducation" width="150px" height="150px"></canvas>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="poverty">
+                            <p>Poverty Rate</p>
+                            <div class="pie-charts">                                
+                                <div class="title">Individual</div>
+                                <canvas id="povertyIndividual" width="150px" height="150px"></canvas>
+                            </div>
+                            <div class="pie-charts">
+                                <div class="title">Household</div>
+                                <canvas id="povertyHousehold" width="150px" height="150px"></canvas>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="atRisk">
+                            <p>Population at Risk</p>
+                            <div class="pie-charts">                                
+                                <div class="title">Persons with Disability</div>
+                                <canvas id="atRiskPWD" width="150px" height="150px"></canvas>
+                            </div>
+                            <div class="pie-charts">
+                                <div class="title">Ethnolinguistic Distribution</div>
+                                <canvas id="atRiskEthno" width="150px" height="150px"></canvas>
+                            </div>
+                            <div class="pie-charts">
+                                <div class="title">Seeing</div>
+                                <canvas id="atRiskSee" width="150px" height="150px"></canvas>
+                            </div>
+                            <div class="pie-charts">
+                                <div class="title">Hearing</div>
+                                <canvas id="atRiskHear" width="150px" height="150px"></canvas>
+                            </div>
+                            <div class="pie-charts">
+                                <div class="title">Walking</div>
+                                <canvas id="atRiskWalk" width="150px" height="150px"></canvas>
+                            </div>
+                            <div class="pie-charts">
+                                <div class="title">Remembering</div>
+                                <canvas id="atRiskRem" width="150px" height="150px"></canvas>
+                            </div>
+                            <div class="pie-charts">
+                                <div class="title">Caring for themselves</div>
+                                <canvas id="atRiskCare" width="150px" height="150px"></canvas>
+                            </div>
+                            <div class="pie-charts">
+                                <div class="title">Communicating</div>
+                                <canvas id="atRiskComm" width="150px" height="150px"></canvas>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="conveniences">
+                            <p>Conveniences</p>
+                            <div class="pie-charts">
+                                <chart value='internetAccess' chart-obj='chartObj' id="internet_access">
+                                </chart>
+                            </div>
+                            <div id="picto">
+                                <table id="pictograph" class="table table-bordered">
+                                    <tbody>
+                                        <tr ng-repeat="c in conveniences">
+                                            <td>
+                                            <div class="pictogram" ng-repeat="x in c.value track by $index">
+                                                <img class="text-center" src="static/img/websafe/conveniences/{{! c.key }}.png"/>
+                                            </div>
+                                            <div class="text-center" style="vertical-align:bottom;"><span>{{! c.verbose_name }}</span></div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="education">
+                            <p>Education</p>
+                            <div class="pie-charts">
+                                <chart value='literacyRate' chart-obj='chartObj' id="literacy_rate"></chart>
+                            </div>
+                            <div class="pie-charts">
+                                <chart value='literacyRateM' chart-obj='chartObj' id="literacy_ratem"></chart>
+                            </div>
+                            <div class="pie-charts">
+                                <chart value='literacyRateF' chart-obj='chartObj' id="literacy_ratef"></chart>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="energy">
+                            <p>Energy</p>
+                            <div class="pie-charts">
+                                <chart value='lightingFuel' chart-obj='chartObj' id="lighting_fuel"></chart>
+                            </div>
+                            <div class="pie-charts">
+                                <chart value='cookingFuel' chart-obj='chartObj' id="cooking_fuel"></chart>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="wash">
+                            <p>Wash</p>
+                            <div class="pie-charts">
+                                <chart value='drinkingWater' chart-obj='chartObj' id="drinking_water"></chart>
+                            </div>
+                            <div class="pie-charts">
+                                <chart value='cookingWater' chart-obj='chartObj' id="cooking_water"></chart>
+                            </div>
+                            <div class="pie-charts">
+                                <chart value='laundryWater' chart-obj='chartObj' id="laundry_water"></chart>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+{#                <button class="btn btn-primary" id="viewPdf" ng-click="viewPdf()"><span>View PDF</span></button>#}
+                <button class="btn btn-warning" ng-click="close()">Close</button>
+            </div>
+        </div>
+    </div>
+</script>
+
+<script type="text/ng-template" id="buildingResults.html" class="modal fade">
+    <div class="websafe-modal">
+        <div class="modal-content"> 
+            <div class="modal-body">
+                <div id="question">
+                    <div class="question">
+                        <h4>In the event of a <strong ng-bind="haz_layer_text.category"></strong>, how many <span ng-bind="exposure_text"></span> might <span ng-bind="impact_text"></span>?</h4>
+                    </div>
+                </div>
+                <div class="bs-example bs-example-tabs" role="tabpanel">
+                    <ul class="nav nav-tabs nav-tabs-responsive" role="tablist">
+                        <li role="presentation" class="active"><a href="#summary" aria-controls="summary" role="tab" data-toggle="tab">Summary</a></li>
+                        <li role="presentation"><a href="#needs" aria-controls="needs" role="tab" data-toggle="tab">Building Types</a></li>
+                        <li role="presentation"><a href="#checklist" aria-controls="checklist" role="tab" data-toggle="tab">Check Listo</a></li>
+                        <li role="presentation"><a href="#disaster-attribute" aria-controls="disaster-attribute" role="tab" data-toggle="tab">Risk Profile</a></li>
+                        <li role="presentation" class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                               Census Building Data<span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li role="presentation"><a href="#houseCharacteristics" aria-controls="houseCharacteristics" role="tab" data-toggle="tab" ng-click="toggleHouseCharacteristics(hazard.data.psgc)">House Chacteristics</a></li>
+                                <li role="presentation"><a href="#ownershipParams" aria-controls="ownershipParams" role="tab" data-toggle="tab" ng-click="toggleHouseOwnership(hazard.data.psgc)">Ownership Parameters</a></li>
+                                <li role="presentation"><a href="#sanitary" aria-controls="sanitary" role="tab" data-toggle="tab" ng-click="toggleSanitary(hazard.data.psgc)">Sanitary</a></li>
+                                <li role="presentation"><a href="#other" aria-controls="other" role="tab" data-toggle="tab">Previously Colapsed Buildings</a></li>
+                                <!--<li role="presentation"><a href="#demographic" aria-controls="demographic" role="tab" data-toggle="tab">Demographic</a></li>-->
+                                <!--<li role="presentation"><a href="#household" aria-controls="household" role="tab" data-toggle="tab" ng-click="toggleHousehold(hazard.data.psgc)">Household</a></li>-->
+                                <!--<li role="presentation"><a href="#unemployed" aria-controls="unemployed" role="tab" data-toggle="tab" ng-click="toggleBarChart(hazard.data.psgc,'table','unemployedRate')">Unemployment Rate</a></li>-->
+                                <!--<li role="presentation"><a href="#poverty" aria-controls="poverty" role="tab" data-toggle="tab" ng-click="togglePoverty(hazard.data.psgc)">Poverty Rate</a></li>-->
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane fade in active" id="summary">
+                            <div id="row1">
+                                <table class="table-buildings">
+                                    <tr>
+                                        <td rowspan="2" id="affected">
+                                            <chart value='affectedPieChart' chart-obj='chartObj' id="affected_chart">
+                                            </chart>
+                                        </td>
+                                        <td colspan="2" id="total">
+                                            <div>
+                                                <img src="static/img/websafe/infrastructure_building_100px.png" height="70" />
+                                                <div>
+                                                    <h1 ng-bind="total"></h1>
+                                                    <span>Total Buildings</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">
+                                            <chart value='materialsBarChart' chart-obj='chartObj' id="materials_chart">
+                                            </chart>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="needs">
+                            <div id="needs-per-week">
+                                <h1>BUILDING TYPES</h1>
+                                <div class="need-row">
+                                    <div class="need">
+                                        <a href="#" ng-click="toggleNames('school')">
+                                            <img src="static/img/websafe/infrastructure_school_100px.png" />
+                                        </a>
+                                        <div id="affected-popup" style="display:none" class="popup_content" >
+                                        </div>
+                                        <div>
+                                            <span class="need-amt" ng-bind="school"></span>
+                                            <span class="need-label">School</span>
+                                        </div>
+                                    </div>
+                                    <div class="need">
+                                        <a href="#" ng-click="toggleNames('residential')">
+                                            <img src="static/img/websafe/infrastructure_house_100px.png" />
+                                        </a>
+                                        <div>
+                                            <span class="need-amt" ng-bind="residential"></span>
+                                            <span class="need-label">Residential</span>
+                                        </div>
+                                    </div>
+                                    <div class="need">
+                                        <a href="#" ng-click="toggleNames('government')">
+                                            <img src="static/img/websafe/infrastructure_government_office_100px.png" />
+                                        </a>
+                                        <div>
+                                            <span class="need-amt" ng-bind="government"></span>
+                                            <span class="need-label">Government</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="need-row">
+                                    <div class="need">
+                                        <a href="#" ng-click="toggleNames('hospital')">
+                                            <img src="static/img/websafe/infrastructure_hospital_100px.png" />
+                                        </a>
+                                        <div>
+                                            <span class="need-amt" ng-bind="hospital"></span>
+                                            <span class="need-label">Hospital</span>
+                                        </div>
+                                    </div>
+                                    <div class="need">
+                                        <a href="#" ng-click="toggleNames('church')">
+                                            <img src="static/img/websafe/infrastructure_church_100px.png" />
+                                        </a>
+                                        <div>
+                                            <span class="need-amt" ng-bind="church"></span>
+                                            <span class="need-label">Church</span>
+                                        </div>
+                                    </div>
+                                    <div class="need">
+                                        <a href="#">
+                                            <img src="static/img/websafe/infrastructure_building_100px.png" />
+                                        </a>
+                                        <div>
+                                            <span class="need-amt" ng-bind="others"></span>
+                                            <span class="need-label">Others</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="checklist">
+                            <div id="row3">
+                                <img src="static/img/websafe/checklist-prepare.png" height="200" usemap="#checklist-map"/>
+                                <map name="checklist-map">
+                                  <area shape="circle" coords="250,70,16" alt="A" ng-click="showClicked('A')">
+                                  <area shape="circle" coords="252,111,16" alt="B" ng-click="showClicked('B')">
+                                  <area shape="circle" coords="816,96,16" alt="C" ng-click="showClicked('C')">
+                                  <area shape="circle" coords="848,96,16" alt="D" ng-click="showClicked('D')">
+                                  <area shape="circle" coords="881,95,16" alt="E" ng-click="showClicked('E')">
+                                  <area shape="circle" coords="803,179,16" alt="F" ng-click="showClicked('F')">
+                                  <area shape="circle" coords="1820,128,16" alt="F" ng-click="showClicked('F')">
+                                </map>
+                            </div>
+                            <div id="logo-footnote">
+                                <img src="static/img/websafe/dilg.png" height="50" />
+                                <img src="static/img/websafe/ndrrmc.png" height="50" />
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="houseCharacteristics">
+                            <p>House Characteristics</p>
+                            <div class="pie-charts">                                
+                                <div class="title">Wall Type</div>
+                                <canvas id="houseWalls" width="150px" height="150px"></canvas>
+                            </div>
+                            <div class="pie-charts">
+                                <div class="title">Floor Type</div>
+                                <canvas id="houseRoof" width="150px" height="150px"></canvas>
+                            </div>
+                            <div class="pie-charts">
+                                <div class="title">Floor Area</div>
+                                <canvas id="houseFloor" width="150px" height="150px"></canvas>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="ownershipParams">
+                            <p>Ownership Parameters</p>
+                            <div class="pie-charts">                                
+                                <div class="title">Tenure</div>
+                                <canvas id="ownershipTenure" width="150px" height="150px"></canvas>
+                            </div>
+                            <div class="pie-charts">
+                                <div class="title">Year Built</div>
+                                <canvas id="ownershipBuilt" width="150px" height="150px"></canvas>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="sanitary">
+                            <p>Sanitary</p>
+                            <div class="pie-charts">                                
+                                <div class="title">Garbage Disposal</div>
+                                <canvas id="sanitaryGarbage" width="150px" height="150px"></canvas>
+                            </div>
+                            <div class="pie-charts">
+                                <div class="title">Toilet</div>
+                                <canvas id="sanitaryToilet" width="150px" height="150px"></canvas>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="other">
+                            <p>Previously Collapsed Buildings</p>
+                            <div class="collapsed">
+                                <img src="static/img/websafe/infrastructure_house_100px.png" />
+                                <div>
+                                    <span class="need-label">Previously Collapsed Buildings</span>
+                                    <span class="need-amt" ng-bind="collapsed"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="disaster-attribute">
+                            <canvas id="disaster-chart" width="300" height="300"></canvas>
+                            <!--*Dummy data only as of now-->
+                            {{! toggleDisasterChart(hazard.data.psgc,exposure.data) }}
+                            <!--No data to display as of the moment-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+{#                <button class="btn btn-primary" id="viewPdf" ng-click="viewPdf()"><span>View PDF</span></button>#}
+                <button class="btn btn-warning" ng-click="close()">Close</button>
+            </div>
+        </div>
+    </div>
+</script>
+
+
+
+<!--
+<div class="legend legend_hazard" ng-show="hazard.showLegend">
+    <h4>Hazard</h4>
+    <ul>
+        <li><span style="background: #ffff00;"></span>Low Hazard</li>
+        <li><span style="background: #e69800;"></span>Moderate Hazard</li>
+        <li><span style="background: #e60000;"></span>High Hazard</li>
+    </ul>
+</div>
+<div class="legend legend_exposure" ng-show="exposure.showLegend">
+    <h4>Exposure</h4>
+    <img id="exposure_legend" ng-src="{{! exposure.legend }}">
+</div>
+
+<div class="legend legend_hazard" ng-show="hazard.showLegend">
+    <h4>Hazard</h4>
+    <img id="hazard_legend" ng-src="{{! hazard.legend }}">
+</div>
+
+<div class="legend legend_impact" ng-show="impact.showLegend">
+    <h4>Impact</h4>
+    <img id="impact_legend" ng-src="{{! impact.legend }}">
+</div>
+-->

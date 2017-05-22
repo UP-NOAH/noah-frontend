@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<meta content='IE=Edge,chrome=1' http-equiv='X-UA-Compatible'>
+<meta content='width=device-width, initial-scale=1.0' name='viewport'>
+<link href="/assets/favicon-a291d762e30e031c9825ff56a7784ddd.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
+<title>Project NOAH</title>
+<meta content="authenticity_token" name="csrf-param" />
+<meta content="e/eJGlyigJSrnVd6n5nPJ/FRuYwnH+req+s7qhgkNzw=" name="csrf-token" />
+<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+<!--[if lt IE 9]>
+<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js"></script>
+<![endif]-->
+<link href="{{ static_url("css/dashboard/application-736bddf2cd1e2f7e88a5f129bf1fd350.css") }}" media="all" rel="stylesheet" />
+<link href="{{ static_url("img/dashboard/apple-touch-icon-144x144-precomposed.png") }}" rel="apple-touch-icon-precomposed" sizes="144x144" type="image/png" />
+<link href="{{ static_url("img/dashboard/apple-touch-icon-114x114-precomposed.png") }}" rel="apple-touch-icon-precomposed" sizes="114x114" type="image/png" />
+<link href="/images/apple-touch-icon-72x72-precomposed.png" rel="apple-touch-icon-precomposed" sizes="72x72" type="image/png" />
+<link href="/images/apple-touch-icon-precomposed.png" rel="apple-touch-icon-precomposed" type="image/png" />
+</head>
+<body>
+<div class='navbar navbar-fixed-top navbar-inverse'>
+<div class='navbar-inner'>
+<div class='container'>
+<a class='btn btn-navbar' data-target='.nav-collapse' data-toggle='collapse'>
+<span class='icon-bar'></span>
+<span class='icon-bar'></span>
+<span class='icon-bar'></span>
+</a>
+<a class='brand' onclick="window.location.assign('/');">
+<img alt="Dost" src={{ static_url("img/dashboard/dost-404a577cb3afe272c9ff1e1b95072ac5.png") }} />
+Project NOAH
+</a>
+</div>
+</div>
+</div>
+<br>
+<br>
+<br>
+<div class='container'>
+<div class='row'>
+<div class='span12'>
+<div class='text-center' id='flashes'>
+
+</div>
+<div id='main'>
+<div class='modal hide fade' id='dashboard'>
+<div class='modal-header'>
+<h4>Project NOAH Links</h4>
+</div>
+<div class='modal-body'>
+<div id='choices'>
+<table class='table table-condensed table-striped'>
+<thead>
+<tr>
+<th>Flood Site</th>
+<th>Earthquake Site</th>
+<th>Landslide Site</th>
+<th>Storm Surge Site</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a class="btn" href="http://noah.dost.gov.ph" target="_blank"><img alt="Flood" src="{{ static_url("img/dashboard/flood-565701b1e2770728df2cca51a9dbe2d5.jpg") }}" /></a></td>
+<td><a class="btn" href="http://54.251.52.155:8001/" target="_blank"><img alt="Earthquake" src="{{ static_url("img/dashboard/earthquake-cf3e3f86ed12b4dc0fcc61b0a53af384.png") }}" /></a></td>
+<td><a class="btn" href="http://landslide.noahsark.webfactional.com" target="_blank"><img alt="Landslide" src="{{ static_url("img/dashboard/landslide-526f8f69ee08290db016f58af2a54292.png") }}" /></a></td>
+<td><a class="btn" href="http://stormsurge.noahsark.webfactional.com" target="_blank"><img alt="Storm surge" src="{{ static_url("img/dashboard/storm_surge-f7ef76bc131b86f967f78f89f1824e5d.jpg") }}" /></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id='links-1'>
+<table class='table table-condensed table-striped'>
+<thead>
+<tr>
+<th>NOAH Blog</th>
+<th>Automated Sensors Status</th>
+<th>ClimateX Status</th>
+<th>Twitter Control Panel</th>
+<th>NOAH-NTEK</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a class="btn" href="http://blog.noah.dost.gov.ph/" target="_blank"><img alt="Blog" src="{{ static_url("img/dashboard/blog-a01ed62adfab7e0657fbc12aff455745.jpg") }}" /></a></td>
+<td><a class="btn" href="http://noah.dost.gov.ph/status/" target="_blank"><img alt="Sensors" src="{{ static_url("img/dashboard/sensors-0f1a485fa1a4d05c37195a91ad281173.jpg") }}" /></a></td>
+<td><a class="btn" href="http://climatex.ph/status.html" target="_blank"><img alt="Climatex" src="{{ static_url("img/dashboard/climatex-69557ad74d0a3efaa18b66cdc2ac966b.png") }}" /></a></td>
+<td><a class="btn" href="http://54.251.52.155:8000/" target="_blank"><img alt="Twitter" src="{{ static_url("img/dashboard/twitter-20b231f088353d50591b8a0cd0e9a4ce.png") }}" /></a></td>
+<td><a class="btn" href="http://54.251.52.155/" target="_blank"><img alt="Ntek" src="{{ static_url("img/dashboard/ntek-10e8a593f3f7adf1835aaea84353b961.png") }}" /></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id='links-2'>
+<table class='table table-condensed table-striped'>
+<thead>
+<tr>
+<th>Task Manager</th>
+<th>InfoBoard</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a class="btn" href="" onclick="saveUrl(&#39;tasks&#39;); return false;"><img alt="Tasks" src="{{ static_url("img/dashboard/tasks-64d2dfa12b057bc2923193b4968bd26e.jpg") }}" /></a></td>
+<td><a class="btn" href="" onclick="saveUrl(&#39;infoboard&#39;); return false;"><img alt="Infoboard" src="{{ static_url("img/dashboard/infoboard-91d10693cfd8eef7bc542192751aed99.jpg") }}" /></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class='modal-footer'>
+<div class='pagination-centered hide' id='social-accounts'>
+<div class='strong' id='destination'></div>
+<h5>Login via:</h5>
+<a href="/users/auth/facebook"><img alt="Fb" src="{{ static_url("img/dashboard/fb-12ec38da0156ea767d2b1389e2874542.png") }}" /></a>
+<a href="/users/auth/google_oauth2"><img alt="Google" src="{{ static_url("img/dashboard/google-c584c276fbcd5aa9ef03a92fcf40948d.png") }}" /></a>
+</div>
+</div>
+</div>
+<link href="{{ static_url("css/dashboard/dashboard-7064710adff29389b3921f5b32474ee1.css") }}" media="screen" rel="stylesheet" />
+<script src="{{ static_url("js/dashboard/dashboard-066f7b034d15a8b88e8a24bda6a5d44b.js") }}"></script>
+
+</div>
+<div id='push'></div>
+</div>
+</div>
+</div>
+<div class='footer navbar navbar-fixed-bottom'>
+<p>
+&copy;
+Project NOAH 2013.
+</p>
+</div>
+<!--
+Javascripts
+==================================================
+-->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="{{ static_url("js/dashboard/application-0deab527160fb4fcb7bd32f664f49b97.js") }}"></script>
+</body>
+</html>

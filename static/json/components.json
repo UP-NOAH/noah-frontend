@@ -1,0 +1,307 @@
+{
+	"components": [
+		{
+			"component_name": "Weather",
+			"component_desc": "Shows precipitation data and near real-time river inundation to monitor the effects of rainfall volume to the water level in streams or rivers. ",
+			"component_link": "all",
+			"component_tag": "weather",
+			"component_img": "static/img/sidebar/weatherbtn.png",
+			"component_data": [
+				{
+					"section_name": "Contour",
+					"section_desc": "Estimated weather indicators based on data recorded by Rain Gauges and Automatic Weather Stations",
+					"section_link": "weather",
+					"section_tag": "contours",
+					"section_data": []
+				},
+				{
+					"section_name": "Doppler Stations",
+					"section_desc": "Rain-bearing clouds as recorded by Doppler Radars",
+					"section_link": "weather",
+					"section_tag": "dopplers",
+					"section_data": []
+				},
+				{
+					"section_name": "Real Time River Inundations",
+					"section_desc": "Modeled river extent based on measurements gathered by Stream Gauges, Rain Gauges, and Weather Stations",
+					"section_link": "weather",
+					"section_tag": "riverinundations",
+					"section_data": []
+				},
+				{
+					"section_name": "Satellite",
+					"section_desc": "Images used for typhoon monitoring",
+					"section_link": "weather",
+					"section_tag": "satellites",
+					"section_data": []
+				},
+				{
+					"section_name": "Weather Outlook",
+					"section_desc": "Localized rain and weather forecasts",
+					"section_link": "weather",
+					"section_tag": "weatheroutlook",
+					"section_data": []
+				}
+			]
+		},
+		{
+			"component_name": "Sensors",
+			"component_desc": "Shows real-time information from the rain gauges, weather stations, and tide levels which also serves as flood early warning system.",
+			"component_link": "all",
+			"component_tag": "sensors",
+			"component_img": "static/img/sidebar/sensorbtn.png",
+			"component_data": [
+				{
+					"section_name": "Rain Gauges",
+					"section_desc": "Amount of rain collected by Rain Gauges",
+					"section_link": "sensors",
+					"section_tag": "arg",
+					"section_data": []
+				},
+				{
+					"section_name": "Stream Gauges",
+					"section_desc": "Water Level in rivers recorded by Stream Gauges",
+					"section_link": "sensors",
+					"section_tag": "asg",
+					"section_data": []
+				},
+				{
+					"section_name": "Rain and Stream Gauges",
+					"section_desc": "Amount of rain and water level in rivers as recorded by 'tandem' of Rain Gauges and Stream Gauges",
+					"section_link": "sensors",
+					"section_tag": "rwl",
+					"section_data": []
+				},
+				{
+					"section_name": "Weather Stations",
+					"section_desc": "Rainfall, pressure, humidity, and temperature measurements by Automatic Weather Stations",
+					"section_link": "sensors",
+					"section_tag": "aws",
+					"section_data": []
+				},
+				{
+					"section_name": "Tide Levels",
+					"section_desc": "Predicted Tide Level",
+					"section_link": "sensors",
+					"section_tag": "tide",
+					"section_data": []
+				}
+			]
+		},
+		{
+			"component_name": "Flood",
+			"component_desc": "Shows flood hazard maps in accordance to the rainfall return rate per region and detailed flood reports from citizens. NOTE: FLOOD MAPS ARE BEING UPDATED AT THE MOMENT. PLEASE BEAR WITH US",
+			"component_link": "all",
+			"component_tag": "flood",
+			"component_img": "static/img/sidebar/floodbtn.png",
+			"component_data": [
+				{
+					"section_name": "5 Year Flood Hazards",
+					"section_desc": "Flood Hazard maps based on different rainfall scenarios",
+					"section_link": "geoserver",
+					"section_tag": "flood5",
+					"section_data": "flood_5:Flood5_2017April21"
+				},
+			  	{
+					"section_name": "25 Year Flood Hazards",
+					"section_desc": "Flood Hazard maps based on different rainfall scenarios",
+					"section_link": "geoserver",
+					"section_tag": "flood25",
+					"section_data": "flood_25:Flood25_2017April21"
+				},			  
+			  	{
+					"section_name": "100 Year Flood Hazards",
+					"section_desc": "Flood Hazard maps based on different rainfall scenarios",
+					"section_link": "geoserver",
+					"section_tag": "flood100",
+					"section_data": "Flood100_2017March31"
+				},
+				{
+					"section_name": "Flood Reports",
+					"section_desc": "Crowd-sourced flood reports",
+					"section_link": "flood",
+					"section_tag": "floodreports",
+					"section_data": []
+				}
+			]
+		},
+		{
+			"component_name": "Landslides",
+			"component_desc": "Shows the following hazard maps and landslide-related information. NOTE: LANDSLIDE MAPS ARE BEING UPDATED. PLEASE BEAR WITH US",
+			"component_link": "all",
+			"component_tag": "landslide",
+			"component_img": "static/img/sidebar/landslidebtn.png",
+			"component_data": [
+				{
+					"section_name": "Landslide Hazard Maps",
+					"section_desc": "Hazard map showing unstable slopes and landslide extent NOTE: LANDSLIDE MAPS ARE BEING UPDATED. PLEASE BEAR WITH US",
+					"section_link": "geoserver",
+					"section_tag": "landslidehazards",
+					"section_data": "Landslide:All"
+				},
+				{
+					"section_name": "Unstable Slopes Maps",
+					"section_desc": "Areas that are likely to collapse during heavy rainfall or strong earthquake NOTE: LANDSLIDE MAPS ARE BEING UPDATED. PLEASE BEAR WITH US",
+					"section_link": "geoserver",
+					"section_tag": "landslideunstable",
+					"section_data": "Unstable:All"
+				},
+				{
+					"section_name": "Alluvial Fan Hazards",
+					"section_desc": "Fan-shaped landforms most likely to experience floods and debris flow NOTE: LANDSLIDE MAPS ARE BEING UPDATED. PLEASE BEAR WITH US",
+					"section_link": "geoserver",
+					"section_tag": "landslidealluvial",
+					"section_data": "Alluvial:All"
+				}
+			]
+		},
+		{
+			"component_name": "Storm Surge",
+			"component_desc": "Shows storm surge historical data and inundation maps.",
+			"component_link": "all",
+			"component_tag": "stormsurge",
+			"component_img": "static/img/sidebar/stormsurgebtn.png",
+			"component_data": [
+				{
+					"section_name": "Storm Surge Advisory 1",
+					"section_desc": "Storm Surge Hazard maps based on predicted storm surge height; SSA 1: 2m storm surge height",
+					"section_link": "geoserver",
+					"section_tag": "stormsurge1",
+					"section_data": "SSA1"
+				},
+			  	{
+					"section_name": "Storm Surge Advisory 2",
+					"section_desc": "Storm Surge Hazard maps based on predicted storm surge height; SSA 2: 3m storm surge height",
+					"section_link": "geoserver",
+					"section_tag": "stormsurge2",
+					"section_data": "SSA2"
+				},
+			  	{
+					"section_name": "Storm Surge Advisory 3",
+					"section_desc": "Storm Surge Hazard maps based on predicted storm surge height; SSA 3: 4m storm surge height",
+					"section_link": "geoserver",
+					"section_tag": "stormsurge3",
+					"section_data": "SSA3"
+				},
+			  	{
+					"section_name": "Storm Surge Advisory 4",
+					"section_desc": "Storm Surge Hazard maps based on predicted storm surge height; SSA 4: 5m storm surge height",
+					"section_link": "geoserver",
+					"section_tag": "stormsurge4",
+					"section_data": "SSA4"
+				},
+			  	{
+					"section_name": "Yolanda",
+					"section_desc": "Storm Surge Hazard maps based on predicted storm surge height; Yolanda: based on storm surge brought about by Super Typhoon Yolanda",
+					"section_link": "geoserver",
+					"section_tag": "stormsurgeyolanda",
+					"section_data": "Yolanda:All"
+				}
+			]
+		},
+	  	{
+			"component_name": "Boundaries",
+			"component_desc": "Shows the boundaries",
+			"component_link": "all",
+			"component_tag": "boundary",
+			"component_img": "static/img/sidebar/boundary.png",
+			"component_data": [
+				{
+					"section_name": "Provincial Boundaries",
+					"section_desc": "Shows provincial boundaries",
+					"section_link": "boundary",
+					"section_tag": "province",
+					"section_data": "Boundary:Boundary_Province"
+				},
+			  	{
+					"section_name": "Municipal Boundaries",
+					"section_desc": "Shows municipal boundaries",
+					"section_link": "boundary",
+					"section_tag": "municipality",
+					"section_data": "Boundary:Boundary_Municipality"
+				},
+			  	{
+					"section_name": "Barangay Boundaries",
+					"section_desc": "Shows barangay boundaries",
+					"section_link": "boundary",
+					"section_tag": "baranggay",
+					"section_data": "Boundary:Boundary_Barangays"
+				},
+				{
+					"section_name": "River Basin Boundaries",
+					"section_desc": "Shows riverbasin boundaries",
+					"section_link": "boundary",
+					"section_tag": "riverbasin",
+					"section_data": "Boundary:Boundary_Riverbasins"
+				}
+			]
+		},
+	  	{
+			"component_name": "Critical Facilities",
+			"component_desc": "Shows critical facilities during disasters",
+			"component_link": "all",
+			"component_tag": "facility",
+			"component_img": "static/img/sidebar/criticalbtn.png",
+			"component_data": [				
+			  	{
+					"section_name": "Schools",
+					"section_desc": "Shows schools.",
+					"section_source": "Source: OpenStreetMap",
+					"section_link": "facility",
+					"section_tag": "schools",
+					"section_data": "Critical_Facility:CriticalFacilitity_Schools"
+				},
+			  	{
+					"section_name": "Health Facilities",
+					"section_desc": "Shows health facilities.",
+					"section_source": "Source: OpenStreetMap, World Health Organization",
+					"section_link": "facility",
+					"section_tag": "healthfacilities",
+					"section_data": "Critical_Facility:CriticalFacilitity_HealthFacility"
+				},
+                {
+    				"section_name": "Police Stations",
+					"section_desc": "Shows police stations.",
+					"section_source": "Source: OpenStreetMap",
+					"section_link": "facility",
+					"section_tag": "policestations",
+					"section_data": "Critical_Facility:CriticalFacilitity_PoliceStation"
+				},
+				{
+					"section_name": "Fire Stations",
+					"section_desc": "Shows firestations.",
+					"section_source": "Source: OpenStreetMap",
+					"section_link": "facility",
+					"section_tag": "firestations",
+					"section_data": "Critical_Facility:CriticalFacilitity_FireStation"
+				}
+			]
+		},
+	  	{
+		  "component_name": "Dengue Monitoring",
+		  "component_desc": "Mosquito indices is a measurement of mosquito eggs in specified geographic locations which, in turn, reflects the distribution of Aedes mosquitoes, the vector for dengue.",
+		  "component_link": "all",
+		  "component_tag": "mosquito",
+		  "component_img": "static/img/sidebar/ovindexbtn.png",
+		  "component_data": [
+			{
+			 	"section_name": "Ovitrap Index",
+			  	"section_desc": "The Ovitrap Mosquito Index is a measurement of the ratio of mosquito eggs in Ovitraps that are located in specified areas. The index, then, in turn, reflects the distribution of Aedes moqsuitoes, the vector for dengue.",
+			  	"section_source": "Source: DOH and DOST-ASTI",
+			  	"section_link": "mosquito",
+			  	"section_tag": "ovindex",
+			  	"section_data": []
+			}
+		  ]
+
+		},
+		{
+			"component_name": "WebSAFE",
+			"component_link": "",
+			"component_tag": "websafe",
+			"component_img": "static/img/sidebar/icon.png",
+			"component_data": []
+		}
+
+	]
+}

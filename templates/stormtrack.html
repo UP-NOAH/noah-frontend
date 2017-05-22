@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Update Storm Track | Project NOAH{% end %}
+
+{% block css %}
+<link href="{{ static_url("css/reset.css") }}" rel="stylesheet" media="screen">
+<link href="{{ static_url("lib/bootstrap/css/bootstrap.min.css") }}" rel="stylesheet" media="screen">
+<link href="{{ static_url("lib/jquery-ui/jquery-ui.css") }}" rel="stylesheet" media="screen">
+<link href="{{ static_url("css/main.css") }}" rel="stylesheet" media="screen">
+<link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,300,400italic,400,600italic,600,700italic,700,800italic,800" rel="stylesheet prefetch" type="text/css">
+<link rel="stylesheet" type="text/css" href="{{ static_url("css/about.css") }}" media="screen">
+<link rel="shortcut icon" type="image/ico" href="{{ static_url("img/noah-favicon.ico") }}"/>
+{% end %}
+
+{% block pre_scripts %}
+<script src="{{ static_url("lib/jquery.js") }}"></script>
+{% end %}
+
+{% block body_wrapper %}id="about-wrapper"{% end %}
+{% block main_body %}
+                <h1>Update Storm Track</h1>
+{% end %}
+
+{% block post_body %}
+{% end %}
+
+{% block post_scripts %}
+<script src="{{ static_url("lib/jquery.js") }}"></script>
+<script src="{{ static_url("lib/jquery-ui/jquery-ui.min.js") }}"></script>
+<script src="{{ static_url("lib/bootstrap/js/bootstrap.min.js") }}"></script>
+{% end %}

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>WebSAFE Documentation</title>
+	<style>
+		table {width: 100%;}
+		thead {
+			font-weight: bold;
+			text-align: center;
+		}
+		td {
+			border: 1px solid #333;
+			background: #ccc;
+			padding: 10px;
+		}
+		p {
+			margin-top: -15px;
+			margin-bottom: 15px;
+		}
+		td.first(1){
+			widht: 20px;
+		}
+	</style>
+</head>
+<body>
+	<h2>websafe_fields.py</h2>
+	<p>This contains the fields of the different PSA data.</p>
+	<table>
+		<thead>
+			<td class="first">Description</td>
+			<td>Function / Variable</td>
+		</thead>
+		<tr>
+			<td class="first">This lists the fields of the conveniences table, such as appliances, etc. </td>
+			<td>conveniences = ('REGION', ...</td>
+		</tr>
+		<tr>
+			<td class="first">This lists the fields of the economics table, such as the social status of the family.</td>
+			<td> economics = ('REGION', ...</td>
+		</tr>
+		<tr>
+			<td class="first">This lists the fields of the demographics table, such as the age groups and ratio of males and females.</td>
+			<td> demog = ('REGION', ...</td>
+		</tr>
+		<tr>
+			<td class="first">This lists the fields of the educations table, such as literacy rate of males and females.</td>
+			<td> educ = ('REGION', ...</td>
+		</tr>
+		<tr>
+			<td class="first">This lists the fields of the energy table, such as different sources of fuel.</td>
+			<td> energy = ('REGION', ...</td>
+		</tr>
+		<tr>
+			<td class="first">This lists the fields of the landtnure table.</td>
+			<td> landtenure = ('REGION', ...</td>
+		</tr>
+		<tr>
+			<td class="first">This lists the fields of the rh table, such as fertility rate and pregnancy rate.</td>
+			<td> rh = ('REGION', ...</td>
+		</tr>
+		<tr>
+			<td class="first">This lists the fields of the wash table, such as water supply.</td>
+			<td> wash = ('REGION', ...</td>
+		</tr>
+		<tr>
+			<td class="first">This lists the fields of the PSA metadata. Content is the verbose description of the field, and visualization is how the data would be represented. </td>
+			<td> metadata = ['TABLE', 'FIELD', 'CONTENT', 'VISUALIZATION'] </td>
+		</tr>
+	</table>
+</body>
+</html>

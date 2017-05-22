@@ -1,0 +1,196 @@
+{
+	"components": [
+		{
+			"component_name": "Weather",
+			"component_desc": "Shows precipitation data and near real-time river inundation to monitor the effects of rainfall volume to the water level in streams or rivers. ",
+			"component_link": "all",
+			"component_tag": "weather",
+			"component_img": "static/img/sidebar/weatherbtn.png",
+			"component_data": [
+				{
+					"section_name": "Contour",
+					"section_link": "weather",
+					"section_tag": "contours",
+					"section_data": []
+				},
+				{
+					"section_name": "Doppler Stations",
+					"section_link": "weather",
+					"section_tag": "dopplers",
+					"section_data": []
+				},
+				{
+					"section_name": "Real Time River Inundations",
+					"section_link": "weather",
+					"section_tag": "riverinundations",
+					"section_data": []
+				},
+				{
+					"section_name": "Satellite",
+					"section_link": "weather",
+					"section_tag": "satellites",
+					"section_data": []
+				},
+				{
+					"section_name": "Weather Outlook",
+					"section_link": "weather",
+					"section_tag": "weatheroutlook",
+					"section_data": []
+				}
+			]
+		},
+		{
+			"component_name": "Flood",
+			"component_desc": "Shows flood hazard maps in accordance to the rainfall return rate per region and detailed flood reports from citizens.",
+			"component_link": "all",
+			"component_tag": "flood",
+			"component_img": "static/img/sidebar/floodbtn.png",
+			"component_data": [
+				{
+					"section_name": "Flood Hazards",
+					"section_link": "flood",
+					"section_tag": "floodhazards",
+					"section_data": []
+				},
+				{
+					"section_name": "Flood Reports",
+					"section_link": "flood",
+					"section_tag": "floodreports",
+					"section_data": []
+				}
+			]
+		},
+		{
+			"component_name": "Sensors",
+			"component_desc": "Shows real-time information from the rain gauges, weather stations, and tide levels which also serves as flood early warning system.",
+			"component_link": "all",
+			"component_tag": "sensors",
+			"component_img": "static/img/sidebar/sensorbtn.png",
+			"component_data": [
+				{
+					"section_name": "Rain Gauges",
+					"section_link": "sensors",
+					"section_tag": "arg",
+					"section_data": []
+				},
+				{
+					"section_name": "Stream Gauges",
+					"section_link": "sensors",
+					"section_tag": "asg",
+					"section_data": []
+				},
+				{
+					"section_name": "Rain and Stream Gauges",
+					"section_link": "sensors",
+					"section_tag": "rwl",
+					"section_data": []
+				},
+				{
+					"section_name": "Weather Stations",
+					"section_link": "sensors",
+					"section_tag": "aws",
+					"section_data": []
+				},
+				{
+					"section_name": "Tide Levels",
+					"section_link": "sensors",
+					"section_tag": "tide",
+					"section_data": []
+				}
+			]
+		},
+		{
+			"component_name": "Landslides",
+			"component_desc": "Shows the following hazard maps and landslide-related information.",
+			"component_link": "all",
+			"component_tag": "landslide",
+			"component_img": "static/img/sidebar/landslidebtn.png",
+			"component_data": [
+				{
+					"section_name": "Unstable Slopes",
+					"section_link": "landslide",
+					"section_tag": "unstable",
+					"section_data": []
+				},
+				{
+					"section_name": "Landslide Hazards",
+					"section_link": "landslide",
+					"section_tag": "hazards",
+					"section_data": []
+				},
+				{
+					"section_name": "Debris Flow Hazard Maps",
+					"section_link": "landslide",
+					"section_tag": "debris",
+					"section_data": []
+				},
+				{
+					"section_name": "Alluvial Fans",
+					"section_link": "landslide",
+					"section_tag": "alluvial",
+					"section_data": []
+				}
+			]
+		},
+		{
+			"component_name": "Storm Surge",
+			"component_desc": "Shows storm surge historical data and inundation maps.",
+			"component_link": "all",
+			"component_tag": "stormsurge",
+			"component_img": "static/img/sidebar/stormsurgebtn.png",
+			"component_data": [
+				{
+					"section_name": "Historical Inundation Maps",
+					"section_link": "stormsurge",
+					"section_tag": "historymap",
+					"section_data": []
+				},
+				{
+					"section_name": "Historical Simulations",
+					"section_link": "stormsurge",
+					"section_tag": "historysim",
+					"section_data": []
+				},
+				{
+					"section_name": "Observation Point Forecast",
+					"section_link": "stormsurge",
+					"section_tag": "observeptsforecast",
+					"section_data": []
+				},
+				{
+					"section_name": "Probability of Exceedance",
+					"section_link": "stormsurge",
+					"section_tag": "probablexceed",
+					"section_data": []
+				},
+				{
+					"section_name": "Regional Forecast",
+					"section_link": "stormsurge",
+					"section_tag": "regionalforecast",
+					"section_data": []
+				},
+				{
+					"section_name": "Storm Surge Advisory",
+					"section_link": "stormsurge",
+					"section_tag": "ssadvisory",
+					"section_data": []
+				}
+			]
+		},
+		{
+			"component_name": "WebSAFE",
+			"component_link": "",
+			"component_tag": "websafe",
+			"component_img": "static/img/sidebar/icon.png",
+			"component_data": []
+		},
+		{
+			"component_name": "MOSES",
+			"component_link": "http://noah-moses.cloudapp.net/login",
+			"component_tag": "",
+			"component_img": "static/img/sidebar/mosesbtn.png",
+			"component_data": []
+		}
+
+	]
+}

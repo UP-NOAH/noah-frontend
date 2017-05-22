@@ -1,0 +1,9 @@
+*.pyc
+*.py~
+config.py
+docs/
+*.log
+static/img/latest_contours
+static/json/websafe_hazards.json
+static/json/websafe_muncities.json
+static/json/websafe_provinces.json

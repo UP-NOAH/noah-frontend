@@ -1,0 +1,374 @@
+{% extends "base.html" %}
+
+{% block css %}
+<!--link href="{{ static_url('css/reset.css') }}" rel="stylesheet" media="screen" -->
+<!-- link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" media="screen" -->
+<!-- link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/normalize/3.0.1/normalize.min.css" media="screen" -->
+<link href="{{ static_url('lib/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" media="screen">
+<link href="{{ static_url('lib/ladda-spinner/ladda-themeless.css') }}" rel="stylesheet" media="screen">
+<link href="{{ static_url('css/introjs.min.css') }}" rel="stylesheet" type="text/css">
+<link href="{{ static_url('css/sweetalert.css') }}" rel="stylesheet" type="text/css">
+<link href="{{ static_url('css/introjs-royal.css') }}" rel="stylesheet" type="text/css">
+<link href="{{ static_url('lib/ol3/ol.css') }}" rel="stylesheet" media="screen">
+<link href="{{ static_url('lib/jquery-ui/jquery-ui.css') }}" rel="stylesheet" media="screen">
+<link href="{{ static_url('lib/select2/select2.css') }}" rel="stylesheet" media="screen">
+<link href="{{ static_url('lib/select2/select2-bootstrap.css') }}" rel="stylesheet" media="screen">
+<link href="{{ static_url('css/main.css') }}" rel="stylesheet" media="screen">
+<link href="{{ static_url('css/websafe.css') }}" rel="stylesheet" media="screen">
+<link href="{{ static_url('font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" media="screen">
+<link rel="stylesheet" type="text/css" href="{{ static_url('css/animations.css')}}" media="screen">
+<link rel="stylesheet" type="text/css" href="{{ static_url('lib/jquery-qtip/jquery.qtip.min.css')}}" media="screen">
+<link rel="shortcut icon" type="image/ico" href="{{ static_url('img/noah-favicon.ico') }}"/>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+<link href="{{ static_url('css/search.css') }}" rel="stylesheet" media="screen">
+{% end %}
+
+{% block body_controller %}ng-controller="SidebarCtrl"{% end %}
+
+{% block body_wrapper %}id="wrap"{% end %}
+
+{% block pre_body %}
+<div id="sidemenu-bg"></div>
+<div id="sidemenu">
+    <img class="spinner" ng-hide="dataLoaded" ng-src="{{ static_url('img/spinner.gif') }}" >
+    <div id="menubar" ng-show="dataLoaded">
+        <ul ng-repeat="icon in icons">
+            <li ng-if="icon.sidebar_name != 'MOSES'"
+            tooltip-placement="right"
+            tooltip="{{! icon.sidebar_name }}"
+            class="tooltipli">
+                <a href="#/{{! icon.sidebar_tag}}/{{! icon.sidebar_link }}">
+                    <img ng-cloak id="{{! icon.sidebar_tag }}" ng-src="{{! icon.sidebar_img }}"
+                    data-step="{{! $index + 6}}"
+                    data-intro='{{!tourMeDetails[$index + 5].title}} <br/> {{!tourMeDetails[$index + 5].description}}'
+                    >
+                </a>
+            </li>
+            <li ng-if="icon.sidebar_name == 'MOSES'"
+            tooltip-placement="right"
+            tooltip="{{! icon.sidebar_name }}"
+            class="tooltipli">
+                <a href="http://noah-moses.cloudapp.net/login">
+                    <img ng-cloak id="{{! icon.sidebar_tag }}" ng-src="{{! icon.sidebar_img }}"
+                    data-step="{{! $index + 6}}"
+                    data-intro='{{!tourMeDetails[$index + 5].title}} <br/> {{!tourMeDetails[$index + 5].description}}'
+                    >
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+{% end %}
+{% block main_body %}
+<div class="toolbar-container">
+</div>
+<div id="toolbar" >
+
+    <div id="tools" ng-controller="ToolsCtrl">
+        <ul>
+            <li class="hidden-xs">
+                <a href="#/"
+                tooltip-placement="right"
+                tooltip="Toggle Draw">
+                    <img id="drag" class="toolbuttons" ng-cloak ng-src="{{ static_url('img/toolbar/drag.png') }}" ng-click="dragMode()"
+                    data-step="1"
+                    data-intro='{{!tourMeDetails[0].title}} <br/> {{!tourMeDetails[0].description}}'
+                    />
+                </a>
+            </li>
+            <li class="hidden-xs">
+                <a href="#/"
+                tooltip-placement="right"
+                tooltip="Get Distance">
+                    <img id="distance" class="toolbuttons" ng-cloak ng-src="{{ static_url('img/toolbar/dist.png') }}" ng-click="measureLength()"
+                    data-step="2"
+                    data-intro='{{!tourMeDetails[1].title}} <br/> {{!tourMeDetails[1].description}}'
+                    />
+                </a>
+            </li>
+            <li class="hidden-xs">
+                <a href="#/"
+                tooltip-placement="right"
+                tooltip="Get Area">
+                    <img class="toolbuttons" ng-cloak ng-src="{{ static_url('img/toolbar/area.png') }}" ng-click="measureArea()"
+                    data-step="3"
+                    data-intro='{{!tourMeDetails[2].title}} <br/> {{!tourMeDetails[2].description}}'
+                    />
+                </a>
+            </li>
+            <!-- li>
+                <a href="#/">
+                    <img class="toolbuttons" ng-cloak ng-src="{{ static_url("img/toolbar/circle.png") }}" title="draw circle"/>
+                </a>
+            </li -->
+            <!--li>
+                <input type="image" class="toolbuttons" ng-click="exportMap()" ng-src="{{ static_url("img/toolbar/save-as-image.png") }}" tooltip-placement="right"
+                tooltip="Take Map Screenshot"/>
+            </li-->
+        </ul>
+    </div>
+
+    <!-- div id="tools" class="btn-group" ng-controller="ToolsCtrl">
+        <label class="btn btn-primary" ng-model="radioModel" btn-radio="'off'"></label>
+        <label class="btn btn-primary" ng-model="radioModel" btn-radio="'dist'"></label>
+        <label class="btn btn-primary" ng-model="radioModel" btn-radio="'area'"></label>
+        <input type="image" class="toolbuttons" id="export-png" ng-click="exportMap()" ng-src="{{ static_url("img/toolbar/save-as-image.png") }}" />
+
+            <!--img class="toolbuttons" ng-cloak ng-src="{{ static_url("img/toolbar/save-as-image.png") }}" title="save map as image"/ -->
+        <!-- /button -->
+        <!-- div app-click></div -->
+    <!-- /div -->
+
+    <select ng-cloak id="layer-select" ng-controller="BaseMapCtrl" ng-model="basemap" ng-options="b.verbose for b in basemaps" ng-change="changeMap(basemap)"
+    data-step="4"
+    data-intro='{{!tourMeDetails[3].title}} <br/> {{!tourMeDetails[3].description}}'
+    >
+    </select>
+
+    <!--<div id="search" ng-controller="SearchCtrl">-->
+        <!--<input id="area" name="area" type="text" size="40"-->
+            <!--placeholder="Find a place..."-->
+            <!--data-step="4"-->
+            <!--data-intro='{{!tourMeDetails[3].title}} <br/> {{!tourMeDetails[3].description}}'-->
+        <!--/>-->
+        <!--&lt;!&ndash; img ng-cloak ng-src="{{ static_url('img/search-white.png') }}"/ &ndash;&gt;-->
+    <!--</div>-->
+</div>
+
+<div id="layerList">
+    <ul ng-repeat="layer in layers | reverse" ng-cloak>
+        <span>{{! layer.hazard_layer_name || layer.sub_section_name || layer.name || layer.outlook_name || layer.report_name || layer.draw_layer_name }}
+        <!--slider for layer opacity-->
+            </span>
+         <span id="slider">
+        <input type='range' min='0' max='100' step='0' value='100' ng-model="opa[$index]" ng-change="updateOpacity($index, $event);" />
+        </span>
+        <!--checkbox to hide/show layers-->
+        <input checked="true" type="checkbox" ng-click="showHideLayer($index, $event);"/>
+
+            <!---->
+        <a class="ol-layer-closer" ng-click="removeLayer($index, $event);" eat-click></a>
+        {% if name %}
+        <a class="ol-layer-downloader" ng-click="downloadLayer($index);"><i class="fa fa-download fa-fw"></i></a>
+        {% end %}
+
+    </ul>
+</div>
+
+
+<!-- <div class="menucontainer"> -->
+<!-- THIS IS WHERE NG-ROUTE renders templateUrl/template -->
+<div ng-view class="menu"></div>
+<!-- </div> -->
+<div id="map" ng-controller="MapCtrl">
+    <div id="measureOutput"></div>
+    <div id="gmap" class="fill"></div>
+    <div id="olmap" class="fill"></div>
+    <div id="popup" class="ol-popup">
+        <a href="/#" id="popup-closer" class="ol-popup-closer"></a>
+        <div id="popup-content"></div>
+    </div>
+    <div id="report" class="ol-report">
+        <a href="/#" id="report-closer" class="ol-popup-closer"></a>
+        <div id="report-content"></div>
+    </div>
+    <div id="measure" class="ol-measure" data-toggle="tooltip">
+        <a href="/#" id="measure-closer" class="ol-popup-closer"></a>
+        <div id="measure-content"></div>
+    </div>
+    <div id="outer-charts">
+        <div id="charts">
+
+        </div>
+        <div id="four-hour" class="tables"></div>
+    </div>
+
+    <div id="four-day" class="tables" style="overflow-y:auto"></div>
+</div>
+{% end %}
+
+{% block post_body %}
+<div id="twitter" ng-controller="TwitterCtrl" data-step="16" data-intro="{{!tourMeDetails[15].title}} <br/>{{!tourMeDetails[15].description}}">
+    <h4 title="Click this header to hide in footer">Latest Tweets</h4>
+    <div>
+        <ul></ul>
+    </div>
+</div>
+<div id="footer">
+    <div class="container" ng-controller="TickerCtrl" data-step="15" data-intro='{{!tourMeDetails[14].title}} <br/>{{!tourMeDetails[14].description}}'>
+        <span class="text-muted" ng-cloak ng-show="errorStatus">{{! errorMsg }}</span>
+        <span class="text-muted" ng-cloak ng-hide="errorStatus">Rainfall Data as of {{! date }}:</span>
+        <ul id="weather_news" class="text-muted" ng-hide="errorStatus"></ul>
+    </div>
+    <div id="twitter_panel" title="Hover mouse to pause, click here or icon to view latest tweets">
+        <span></span>
+    </div>
+    <div id="twitter_button" title="Click to view latest tweets"></div>
+    <div class="fb-root">
+                <div class="fb-like" data-href="https://www.facebook.com/dostnoah" data-width="5" data-layout="button" data-action="like" data-show-faces="false"></div>
+                <div class="fb-share-button" data-href="http://noah.dost.gov.ph/" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fnoah.dost.gov.ph%2F&amp;src=sdkpreparse"></a></div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Weather Forecast</h2>
+                <div class="typeahead-container">
+                    <input class="typeahead" type="text" typeahead-on-select="get7DayResult($item)" ng-show="SevDayResultReady" ng-model="selected" typeahead="mun for mun in municipalities | filter:$viewValue | limitTo:10" class="form-control" placeholder="Enter location">
+                </div>
+                <div class="splash-details">
+                <h3 ng-show="SevDayResultReady" class="location" ng-bind="location7"></h3>
+                <p ng-show="SevDayResultReady">Last Checked: <span ng-bind="last_updated"></span></p>
+                </div>
+            </div>
+            <div class="modal-body">
+                <center><img height="50" src="static/img/loading-noah-blue.gif" ng-hide="SevDayResultReady"></center>
+                <table class="table table-hover" ng-show="SevDayResultReady">
+                    <thead>
+                        <tr>
+                            <th>Dates</th>
+                            <th></th>
+                            <th>Low Heat Index</th>
+                            <th>High Heat Index</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="forecast in forecasts">
+                            <td ng-hide="$last"><a href="" data-toggle="modal" data-target="#myModal2" ng-click="showDataPerDate(forecast)">{{! forecast.date | date:'longDate'}}</a></td>
+                            <td ng-hide="$last"><img height="50" ng-src="../static/img/forecast/{{! getMaxRain(forecast.readings) }}"></td>
+                            <td ng-hide="$last">{{! getMinMaxTemp(0,forecast.readings) }} °C</td>
+                            <td ng-hide="$last">{{! getMinMaxTemp(1,forecast.readings) }} °C</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="alert alert-info" style="text-align: justify">
+            <small>
+                <strong>Disclaimer</strong>
+                <br />"The weather outlook displayed in this site is based on a Numerical Weather Prediction (NWP) model implemented by the NOAH-WISE Project. These forecasts are output of ongoing research and development, hence must be used with caution. The official weather forecast is being issued by PAGASA and should be the basis of decision making, especially during severe weather conditions."
+            </small>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="modal fade" id="myModal2" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="splash-details">
+                    <h2 class="location" ng-bind="location7"></h2>
+                    <h4>{{! dataPerDate.date | date:'fullDate'}}</h4>
+                </div>
+            </div>
+            <div class="modal-body" style="max-height:600px;">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Hours</th>
+                            <th></th>
+                            <th>Rainfall Amount</th>
+                            <th>Temperature</th>
+                            <th>Heat Index</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="r in dataPerDate.readings">
+                            <td>{{! r.time }}</td>
+                            <td><img height="50" ng-src="../static/img/forecast/{{! getImg(r.icon) }}"></td>
+                            <td>{{! r.rainfall }} mm</td>
+                            <td>{{! r.temperature }} °C</td>
+                            <td>{{! r.heat_index }} °C</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+{% end %}
+
+{% block post_scripts %}
+<!-- script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script -->
+<!-- script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script -->
+<!-- script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script -->
+<!-- script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/select2/3.5.0/select2.min.js"></script -->
+<script src="{{ static_url('lib/html2canvas.js') }}"></script>
+<script src="{{ static_url('lib/ol3/ol.js') }}"></script>
+<script src="{{ static_url('lib/jquery.js') }}"></script>
+<script src="{{ static_url('lib/jquery-ui/jquery-ui.min.js') }}"></script>
+<script src="{{ static_url('lib/bootstrap/js/bootstrap.min.js') }}"></script>
+<script src="{{ static_url('lib/ladda-spinner/spin.min.js') }}"></script>
+<script src="{{ static_url('lib/select2/select2.min.js') }}"></script>
+<script src="{{ static_url('lib/angular/angular.min.js') }}"></script>
+<script src="{{ static_url('lib/angular/angular-route.min.js') }}"></script>
+<script src="{{ static_url('lib/angular/angular-resource.min.js') }}"></script>
+<script src="{{ static_url('lib/angular/angular-sanitize.min.js') }}"></script>
+<script src="{{ static_url('lib/angular/angular-cookies.min.js') }}"></script>
+<script src="{{ static_url('lib/angular/angular-animate.min.js') }}"></script>
+<script src="{{ static_url('lib/underscore-min.js') }}"></script>
+<script src="{{ static_url('lib/plugins/angular-cache-3.0.0-beta.4.min.js') }}"></script>
+<script src="{{ static_url('lib/angular-bootstrap/ui-bootstrap-tpls-0.10.0.js') }}"></script>
+<script src="{{ static_url('lib/ladda-spinner/ladda.min.js') }}"></script>
+<script src="{{ static_url('lib/select2/ui-select2.js') }}"></script>
+<script src="{{ static_url('lib/highcharts/highcharts_new.js') }}"></script>
+<script src="{{ static_url('lib/highcharts/no-data-to-display.js') }}"></script>
+<script src="{{ static_url('lib/jquery-qtip/jquery.qtip.min.js') }}"></script>
+<script src="{{ static_url('lib/chartjs/Chart.js') }}"></script>
+<!-- <script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/modules/no-data-to-display.js"></script> -->
+<!-- <script src="{{ static_url('lib/highcharts/highcharts-theme.js') }}"></script> -->
+
+<script type="text/javascript"
+    src="//maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyBH1g8w90_M8OQ6zeLzdKKIX62NGd10n_A&libraries=places">
+    //src="//maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyBV_BhwqdWULFgXlhLIxLb5npL30ovoPp8&sensor=false&libraries=places">
+</script>
+
+<!-- Import javascript codes -->
+<script src="{{ static_url('js/app/intro.min.js') }}"></script>
+<script src="{{ static_url('js/app/sweetalert.min.js') }}"></script>
+<script src="{{ static_url('js/app/openlayers/OpenLayersModule.js') }}"></script>
+<script src="{{ static_url('js/app/openlayers/OpenLayersService.js') }}"></script>
+<script src="{{ static_url('js/app/map/MapService.js') }}"></script>
+<script src="{{ static_url('js/app/map/MapModule.js') }}"></script>
+<script src="{{ static_url('js/app/websafe/Config.js') }}"></script>
+<script src="{{ static_url('js/app/websafe/WebsafeService.js') }}"></script>
+<script src="{{ static_url('js/app/websafe/WebsafeModule.js') }}"></script>
+<script src="{{ static_url('js/app/sidebar/SidebarModule.js') }}"></script>
+<script src="{{ static_url('js/app/sidebar/SidebarService.js') }}"></script>
+<script src="{{ static_url('js/app/toolbar/ToolbarModule.js') }}"></script>
+<script src="{{ static_url('js/app/toolbar/ToolbarService.js') }}"></script>
+<script src="{{ static_url('js/app/window/WindowModule.js') }}"></script>
+<script src="{{ static_url('js/app/window/WindowService.js') }}"></script>
+<script src="{{ static_url('js/app.js') }}"></script>
+<script src="{{ static_url('js/app/toolbar/Search.js') }}"></script>
+
+<script type="text/javascript">
+    $(document).on('ready', function(){
+        $('.ol-zoom.ol-unselectable.ol-control').attr('data-step', '5').attr('data-intro', 'ZOOM <br/> Allows you to zoom in and out of the map.');
+    });
+        var popClose = function(){
+            document.getElementById("affected-popup").style.display="none";
+        };
+
+</script>
+{% end %}

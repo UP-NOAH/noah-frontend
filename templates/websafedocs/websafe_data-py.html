@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>WebSAFE Documentation</title>
+	<style>
+		table {width: 100%;}
+		thead {
+			font-weight: bold;
+			text-align: center;
+		}
+		td {
+			border: 1px solid #333;
+			background: #ccc;
+			padding: 10px;
+		}
+		p {
+			margin-top: -15px;
+			margin-bottom: 15px;
+		}
+		td.first(1){
+			widht: 20px;
+		}
+	</style>
+</head>
+<body>
+	<h2>websafe_data.py</h2>
+	<p>This contains the handlers for the data and metadata from PSA.</p>
+	<table>
+		<thead>
+			<td class="first">Description</td>
+			<td>Function / Variable</td>
+		</thead>
+		<!-- Function 1 -->
+		<tr>
+			<td class="first">This class handles the GET requests for PSA data. 
+			</td>
+			<td>class WebsafeDataHandler(BaseHandler) {</td>
+		</tr>
+		<tr>
+			<td class="first">This is the type of PSA data we are querying.
+			</td>
+			<td>table = self.get_argument('table')</td>
+		</tr>
+		<tr>
+			<td class="first">If psgc is provided in the GET request,
+                the value returned will be for the specific psgc</td>
+			<td>mun_psgc = self.get_argument('mun_psgc')</td>
+		</tr>
+		<tr>
+			<td class="first">The query function will retrieve only one entry from the database 
+                    if the psgc is specified.
+			</td>
+			<td>query_fxn = get_one_from_db</td>
+		</tr>
+		<tr>
+			<td class="first">The query function will retrieve all psgc entries from the database 
+                    if the psgc is not specified.
+			</td>
+			<td>query_fxn = get_all_from_db</td>
+		</tr>
+		<tr>
+			<td class="first">&nbsp;</td>
+			<td>}</td>
+		</tr>
+		<!-- Function 2 -->
+		<tr>
+			<td class="first">This class handles the GET requests for PSA metadata. 
+			</td>
+			<td>class WebsafeMetaDataHandler(BaseHandler){</td>
+		</tr>
+		<tr>
+			<td class="first">This sets the PSA metadata the user is querying.</td>
+			<td>table = self.get_argument('table')</td>
+		</tr>
+		<tr>
+			<td class="first">This retrieves all the metadata of the queried table.</td>
+			<td>rec = get_all_from_db(query)</td>
+		</tr>
+		<tr>
+			<td class="first">&nbsp;</td>
+			<td>}</td>
+		</tr>
+	</table>
+</body>
+</html>

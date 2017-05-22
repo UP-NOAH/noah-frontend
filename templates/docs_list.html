@@ -1,0 +1,27 @@
+<!doctype html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <title>{% block title %}WebSAFE Docs{% end %}</title>
+    </head>
+       	<body>
+			<h1> WebSAFE Documentation Index </h1>
+			<h3> Frontend Documentation </h3>
+			<ul>
+				{% for doc in frontend %}
+					<li>
+						<a href="/websafe/docs/{{doc}}" >{{doc}}</a>
+					</li>
+				{% end %}
+			</ul>
+
+			<h3> Backend Documentation </h3>
+			<ul>
+				{% for doc in backend %}
+					<li>
+						<a href="/websafe/docs/{{doc}}" >{{doc}}</a>
+					</li>
+				{% end %}
+			</ul>
+
+		</body>

@@ -1,0 +1,195 @@
+{% extends "base.html" %}
+
+{% block title %}Project NOAH | About{% end %}
+
+{% block css %}
+<link href="{{ static_url("css/reset.css") }}" rel="stylesheet" media="screen">
+<link href="{{ static_url("lib/bootstrap/css/bootstrap.min.css") }}" rel="stylesheet" media="screen">
+<link href="{{ static_url("lib/jquery-ui/jquery-ui.css") }}" rel="stylesheet" media="screen">
+<link href="{{ static_url("css/main.css") }}" rel="stylesheet" media="screen">
+<link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,300,400italic,400,600italic,600,700italic,700,800italic,800" rel="stylesheet prefetch" type="text/css">
+<link rel="stylesheet" type="text/css" href="{{ static_url("css/about.css") }}" media="screen">
+<link rel="shortcut icon" type="image/ico" href="{{ static_url("img/noah-favicon.ico") }}"/>
+{% end %}
+
+{% block pre_scripts %}
+<script src="{{ static_url("lib/jquery.js") }}"></script>
+{% end %}
+
+{% block body_wrapper %}id="about-wrapper"{% end %}
+{% block main_body %}
+
+                <!-- <div class="jumbotron">
+                    <img src="{{ static_url('img/NOAH_logo.png') }}" class="float-right img-responsive" id="logo" />
+                    <h1>NOAH Season II</h1>
+                    <h2>COMING SOON</h2>
+                    <a id="contact-link" href="#contact-us" class="btn btn-primary"><h3>Contact Us</h3></a>
+                </div> -->
+
+
+                <!-- <div class="row">
+                    <h1>I. Introduction</h1>
+                    <img src="{{ static_url('img/about/history.jpg') }}" class="float-right img-responsive about-img"/>
+                    <p>The Philippines, being a locus of typhoons, tsunamis, earthquakes, and volcanic eruptions, is a hotbed of disasters. Natural hazards inflict loss of lives and costly damage to property in the country. The effect of these hazards were witnessed in 2011’s Typhoon Pedring, 2012’s Typhoon Pablo, and the most disastrous storm of the century, 2013’s Typhoon Yolanda. These resulted in a high number of fatalities with economic losses amounting to billions of pesos. Extreme weather is the common factor in these catastrophes. Situated in the humid tropics, the Philippines will inevitably suffer from climate-related calamities similar to those experienced in recent years. With continued development in the lowlands, and growing populations, it is expected that damage to infrastructure and human losses would persist and even rise unless appropriate measures are immediately implemented by government.
+                    </p>
+                    <p>In response to President Aquino’s instructions to put in place a responsive program for disaster prevention and mitigation, specifically, for the Philippines’ warning agencies to be able to provide a 6 hour lead-time warning to vulnerable communities against impending floods and to use advanced technology to enhance current geo-hazard vulnerability maps, the Nationwide Operational Assessment of Hazards (NOAH) was launched by the Department of Science and Technology.
+                    </p>
+                    <img src="{{ static_url('img/about/components.jpg') }}" class="float-right img-responsive about-img" />
+                    <p>NOAH’s mission is to undertake disaster science research and development, advance the use of cutting edge technologies and recommend innovative information services in government’s disaster prevention and mitigation efforts. Though the use of science and technology and in partnership with the academe and other stakeholders, the DOST through Program NOAH is taking a multi-disciplinary approach in developing systems, tools, and other technologies that could be operationalized by government to help prevent and mitigate disasters.
+                    </p><p>NOAH’s immediate task is to integrate current disaster science research and development projects and initiate new efforts within the DOST to achieve this objective. Presently there are nine(9) component projects under the NOAH program, namely:
+                    </p>
+                    <ol style="list-style-type: decimal">
+                        <li>Hydromet Sensors Development</li>
+                        <li>DREAM-LIDAR 3D Mapping</li>
+                        <li>Flood NET – Flood Information Network</li>
+                        <li>Strategic Communication</li>
+                        <li>Disaster Management using WebGIS</li>
+                        <li>Enhancing Geohazard Mapping through LIDAR and High-resolution Imagery</li>
+                        <li>Doppler System Development</li>
+                        <li>Landslide Sensors Development</li>
+                        <li>Storm Surge Inundation Mapping</li>
+                        <li>Weather Information Integration for System Enhancement (WISE)</li>
+                    </ol>
+                    <img src="{{ static_url('img/about/goal.jpg') }}" class="float-right img-responsive about-img" />
+                    <p>The current NOAH Program team is composed of the scientist-leaders of these projects. The country’s warning agencies: PAG-ASA and PHIVOLCS are also represented.
+                    </p><p>Within two years, NOAH shall provide high-resolution flood hazard maps and install 600 automated rain gauges and 400 water level measuring stations for 18 major river basins of the Philippines, namely:
+                    </p>
+                    <ul style="list-style-type: circle">
+                        <li>Marikina River Basin</li>
+                        <li>Cagayan de Oro River Basin</li>
+                        <li>Iligan River Basin</li>
+                        <li>Agno River Basin</li>
+                        <li>Pampanga River Basin</li>
+                        <li>Bicol River Basin</li>
+                        <li>Cagayan River Basin</li>
+                        <li>Agusan River Basin</li>
+                        <li>Panay River Basin</li>
+                        <li>Magaswang Tubig River Basin</li>
+                        <li>Jalaur River Basin</li>
+                        <li>Ilog-Hilabangan River Basin</li>
+                        <li>Agus River Basin</li>
+                        <li>Davao River Basin</li>
+                        <li>Mindanao River Basin</li>
+                        <li>Tagum-Libuganon River Basin</li>
+                        <li>Tagaloan River Basin</li>
+                        <li>Buayan-Malungun River Basin</li>
+                    </ul>
+                    <p>The other river basins of the Philippines will follow soon after the work on the 18 major river basins is completed.
+                    </p><p>The hazard maps are produced with computer simulations that reflect flood-prone areas discernible at a local scale or community level. Such maps are necessary for localized emergency response, identification of evacuation and access routes, road closures during disaster events, siting of key rescue facilities and comprehensive land use planning. The initial output of Project NOAH is focused on the Marikina Watershed. As of July 6, 2012, streaming data from the automated rain gauges and water level sensors, flood hazard maps overlain on Google Maps, graphical satellite radar and Doppler data forecasts, and translated rain intensity and volume measurements in terms of warning and evacuation level alarms, hours or days ahead of the flood event, are accessible online. The output on the Marikina Watershed will serve as the prototype of the efforts done by NOAH and will be replicated for the entire Philippines. Information generated shall also be transmitted using other media and communication channels. Through the use of advanced science and technology, NOAH aims to improve disaster management capacity of local governments and assure homeland security by reducing casualties and property loss from extreme hazard events.
+                    </p>
+                </div>
+
+                <div class="row" id="vision-section">
+                    <h1>II. Vision</h1>
+                    <img src="{{ static_url('img/about/vision.jpg') }}" class="float-right img-responsive about-img" />
+                    <p>The Nationwide Operational Assessment of Hazards (NOAH) program envisions a disaster-free Philippines where communities are empowered through open access to accurate, reliable and timely hazard and risk information.</p>
+                </div>
+
+                <div class="row" id="mission-section">
+                    <h1>III. Mission</h1>
+                    <img src="{{ static_url('img/about/mission.jpg') }}" class="float-right img-responsive about-img" />
+                    <p>To develop high-resolution hazard maps for various type of natural hazards using frontier science and cutting-edge technology.
+                    </p><p>To undertake investigations in meteorological and geological hazards to improve the country’s capability to prevent and mitigate the potentially disastrous impacts of natural hazards.
+                    </p><p>To systematically simulate, validate, and improve geohazard maps.
+                    </p><p>To integrate and assist other agencies in identifying meteorological and geological hazards with the ultimate objective of promoting safety in communities affected by natural hazards.
+                    </p><p>To collaborate with similar institutions or organizations, both national and international, in furtherance of the above purposes.
+                    </P>
+                </div>
+
+                <div class="row" id="agencies-section">
+                        <h3>Participating Agencies</h3>
+                        <ol id="agencies-list"  style="list-style-type: decimal">
+                            <li><a href="http://www.pagasa.dost.gov.ph/">PAGASA</a></li>
+                            <li><a href="http://www.asti.dost.gov.ph/">DOST-ASTI</a></li>
+                            <li><a href="http://www.phivolcs.dost.gov.ph/">PHIVOLCS</a></li>
+                            <li><a href="http://www.stii.dost.gov.ph/">DOST-STII</a></li>
+                            <li><a href="http://www.nigs.upd.edu.ph/index.php?option=com_content&amp;view=article&amp;id=60&amp;Itemid=67">UP NIGS EML Laboratory</a></li>
+                            <li><a> </a><a href="http://www.climatex.ph/">ClimateX Project</a></li>
+                            <li><a href="http://www.nigs.upd.edu.ph/index.php?option=com_content&amp;view=article&amp;id=58&amp;Itemid=64">UP NIGS VTEC Laboratory</a></li>
+                            <li><a href="http://www.nababaha.com/">nababaha.com</a></li>
+                            <li><a href="http://dge.upd.edu.ph/dge/">UP DGE-TCAGP</a></li>
+                            <li><a href="http://www.msi.upd.edu.ph/">UP-MSI</a></li>
+                            <li><a href="http://ucc.upd.edu.ph">UP Computer Center</a></li>
+                            <li><a href="http://www.britishcouncil.org/philippines.htm">British Council</a></li>
+                            <li><a href="http://ukinthephilippines.fco.gov.uk/en/">British Embassy</a></li>
+                            <li><a href="http://www.environment-agency.gov.uk/">UK Environment Agency</a></li>
+                            <li><a href="http://www.bris.ac.uk/cabot/">Cabot Institute, Bristol University</a></li>
+                            <li><a href="http://www.geo.uni-potsdam.de/">Institute of Earth and Environmental Sciences, University of Potsdam</a></li>
+                            <li><a href="http://www.interaksyon.com/">MediaQuest Holdings Inc.</a></li>
+                            <li><a href="http://www.observatory.ph/">Manila Observatory</a></li>
+                            <li><a href="http://groups.yahoo.com/group/DRRNetPhils/">DRRNet</a></li>
+                            <li><a href="http://www.dilg.gov.ph/">DILG</a></li>
+                            <li><a href="http://www.mmda.gov.ph/">MMDA</a></li>
+                            <li><a href="http://www.denr.gov.ph/">DENR</a></li>
+                            <li><a href="http://www.dpwh.gov.ph/">DPWH</a></li>
+                            <li><a href="http://oltrap.pchrd.dost.gov.ph/">DOST PCHRD OLTrap Index</a></li>
+                            <li><a href="http://smart.com.ph/corporate/community/">Smart Communications, Inc.</a></li>
+                            <li><a href="http://www.suncellular.com.ph/">SUN Cellular</a></li>
+                            <li><a href="http://www.google.org/crisisresponse/">Google Crisis Response</a></li>
+                            <li><a href="http://www.petron.com/">Petron</a></li>
+                            <li><a href="http://www.lifesomundane.net/">www.lifesomundane.net</a></li>
+                            <li><a href="https://www.facebook.com/rotary.pinamalayancentral">Rotary Club of Pinamalayan Central</a></li>
+                            <li><a href="http://silverworks.ph/">Silverworks</a></li>
+                            <li><a href="http://www.energy.com.ph/%E2%80%8E">EDC</a></li>
+                            <li><a href="http://www.dswd.gov.ph/%E2%80%8E">DSWD</a></li>
+                            <li><a href="http://www.ndrrmc.gov.ph/">NDRRMC-OCD</a></li>
+                            <li><a href="http://www.worldbank.org/">World Bank</a></li>
+                            <li><a href="http://philippines.usaid.gov/">USAID</a></li>
+                            <li><a href="http://essc.org.ph/">Environmental Science for Social Change (ESSC)</a></li>
+                            <li><a href="http://www.facebook.com/PSLLF">Pambansang Samahan sa Linggwistika at Literaturang Filipino, Ink.</a></li>
+                            <li><a href="http://safesteps.com">Safe Steps</a></li>
+                            <li><a href="http://consuelo.org">Consuelo Foundation</a></li>
+                            <li><a href="http://iom.int/cms/en/sites/iom/home.html">International Organization for Migration</a></li>
+                            <li><a href="http://www.giz.de/en/aboutgiz/profile.html">Deutsche Gesellschaft für Internationale Zusammenarbeit (GIZ)</a></li>
+                            <li><a title="Open Street Map Philippines" href="http://openstreetmap.org.ph/">OpenStreetMap Philippines</a></li>
+                            </ol>
+                            <img src="{{ static_url('img/about/agency-logos.png') }}" class="img-responsive" id="agencies-logo" />
+                </div> -->
+
+        <!--         <div class="row" id="goal-section">
+                    <h3>Data Sources</h3>
+                    <ol style="list-style-type: decimal">
+                        <li><a href="http://www.ausaid.gov.au/Pages/home.aspx">Australian AID</a>: Metro Manila LiDAR data</li>
+                        <li>Collective Strengthening of Community Awareness for Natural Disasters (CSCAND): Metro Manila LiDAR data</li>
+                        <li><a href="http://www.jica.go.jp/english/">Government of Japan: JICA</a></li>
+                        <li><a href="http://www.koica.go.kr/english/main.html">Government of Korea: KOICA</a></li>
+                    </ol>
+                    <h3>Mobile Application Development</h3>
+                    <ol style="list-style-type: decimal">
+                        <li>Rolly Rulete and SMART Communications: 
+                            <a href="https://play.google.com/store/apps/details?id=ph.gov.dost.noah.android">Project NOAH app for Android</a></li>
+                        <li><a href="http://ajwcc.ateneo.edu/">Ateneo Java Wireless Competency Center</a>: 
+                            <a href="https://play.google.com/store/apps/details?id=xtend.noah">Flood Patrol app for Android</a></li>
+                        <li><a href="http://www.pointwest.com.ph/">Pointwest Technologies</a>: </li>                        
+                        <ul style="list-style-type: circle; margin-left: 20px;">
+                            <li>Arko Flood Map app for 
+                                <a href="https://play.google.com/store/apps/details?id=com.pointwest.arko">Android</a> and 
+                                <a href="https://itunes.apple.com/ph/app/arko-ph/id667396845">iOS</a></li>
+                            <li><a href="https://itunes.apple.com/us/app/id1157418497">Project NOAH app for iOS</a></li>
+                        </ul>                        
+                    </ol>
+               
+                </div> -->
+{% end %}
+
+{% block post_body %}
+<div id="contact-section">
+    <div id="contact-section-inner">
+                <h1>Contact Us</h1><a name="contact-us"></a><br />
+                <p>Email: <span id="email">info@noah.dost.gov.ph</span></p>
+                <p>Address: National Institute of Geological Sciences, P. Velasquez cor C. P. Garcia, University of the Philippines Diliman, Quezon City, Philippines 1101</p>
+                <!--p>
+                    For inquiries, please email us at: <span id="email">info@noah.dost.gov.ph</span>
+                </p-->
+    </div>
+</div>
+
+<div id="about-footer">
+</div>
+{% end %}
+
+{% block post_scripts %}
+<script src="{{ static_url("lib/jquery.js") }}"></script>
+<script src="{{ static_url("lib/jquery-ui/jquery-ui.min.js") }}"></script>
+<script src="{{ static_url("lib/bootstrap/js/bootstrap.min.js") }}"></script>
+{% end %}

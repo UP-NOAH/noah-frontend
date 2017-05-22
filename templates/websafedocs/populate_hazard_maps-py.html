@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>WebSAFE Documentation</title>
+	<style>
+		table {width: 100%;}
+		thead {
+			font-weight: bold;
+			text-align: center;
+		}
+		td {
+			border: 1px solid #333;
+			background: #ccc;
+			padding: 10px;
+		}
+		p {
+			margin-top: -15px;
+			margin-bottom: 15px;
+		}
+		td.first(1){
+			widht: 20px;
+		}
+	</style>
+</head>
+<body>
+	<h2>populate_hazard_maps.py</h2>
+	<p>This is used to read from hazard_maps.csv and update the PostgreSQL database.</p>
+	<table>
+		<thead>
+			<td class="first">Description</td>
+			<td>Function / Variable</td>
+		</thead>
+        <tr>
+			<td class="first">This forms the string to the file hazard_maps.csv.
+			</td>
+			<td>file = os.path.join(PROJECT_ROOT , 'populate_data', 'hazard_maps.csv')</td>
+		</tr>
+		<tr>
+			<td class="first">This is the SQL command to insert into the PostgreSQL database.</td>
+			<td>query = 'INSERT INTO hazard_maps (mun_city_psgc, '...</td>
+		</tr>
+		<tr>
+			<td class="first">This is the location of the hazard map raster.</td>
+			<td>location = 'files/tiff/{hazard}/{type}/{file}.tif'</td>
+		</tr>
+		<tr>
+			<td class="first">This formats the query string based on the csv.</td>
+			<td>            query = query.format(
+                mun_city_psgc = layer[2].zfill(9),
+                geoserver_layer = layer[3]+':'+layer[4],
+                file_loc = loc,
+                layer_permission_id = 1,
+                hazard_type = hazard,
+                event_id = layer[6]
+            )
+
+</td>
+		</tr>
+	</table>
+</body>
+</html>

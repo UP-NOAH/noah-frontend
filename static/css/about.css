@@ -1,0 +1,103 @@
+#about-wrapper {
+    max-width: 1000px;
+    margin: 60px auto;
+    padding: 30px;
+}
+
+.jumbotron {
+    padding: 35px;
+}
+
+.float-left {
+    float: left;
+}
+
+.float-right {
+    float: right;
+}
+
+.clear-both {
+    clear: both;
+}
+
+#logo{
+    width: 200px;
+}
+
+#agencies-logo {
+    background: #ccc;
+    width: 70%;
+    margin: 0 auto;
+}
+
+#agencies-list li {
+    margin-left: 20px
+  line-height:1.5em;
+  float:left;
+  display:inline;
+  width:50%;
+}
+#agencies-list {
+    font-size: small;
+    text-align: center;
+  width:100%;
+  margin-bottom:20px;
+  overflow:hidden;
+}
+
+#components-list {
+    text-align: center;
+}
+
+.row {
+    padding: 15px;
+}
+
+#contact-link h3 {
+    margin: 0;
+    padding: 0;
+}
+
+#about-footer {
+    width: 100%;
+    height: 120px;
+    background: black;
+}
+
+#contact-section-inner {
+    margin: 0px auto 30px auto;
+    width: 800px;
+}
+
+#contact-section {
+    width: 100%;
+    background: #ccc;
+    padding: 30px;
+    margin-top: -30px;
+}
+
+.about-img {
+  margin-left: 15px;
+  width: 370px;
+}
+
+.row p {
+  text-align:justify;
+}
+.row p, #components-list {
+  width: 520px;
+}
+
+#agencies-section p {
+  width: 100%;
+}
+
+p {
+  font-size: 15px;
+}
+
+span#email {
+  font-style:italic;
+  font-weight: bold;
+  font-size: 18px;
+}

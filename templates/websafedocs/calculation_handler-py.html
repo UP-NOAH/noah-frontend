@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>WebSAFE Documentation</title>
+	<style>
+		table {width: 100%;}
+		thead {
+			font-weight: bold;
+			text-align: center;
+		}
+		td {
+			border: 1px solid #333;
+			background: #ccc;
+			padding: 10px;
+		}
+		p {
+			margin-top: -15px;
+			margin-bottom: 15px;
+		}
+		td.first(1){
+			widht: 20px;
+		}
+	</style>
+</head>
+<body>
+	<h2>calculation_handler.py</h2>
+	<p>This file contains the handler for WebSAFE calculation requests that calls the InaSAFE API.</p>
+	<table>
+		<thead>
+			<td class="first">Description</td>
+			<td>Function / Variable</td>
+		</thead>
+		<tr>
+			<td class="first">The asynchronous handler for impact calculation requests
+			</td>
+			<td>class AsyncImpactAnalysisHandler(BaseHandler)</td>
+		</tr>
+		<tr>
+			<td class="first">This is the municipality upon which the impact analysis will be calculated.</td>
+			<td>psgc = self.get_argument('psgc')</td>
+		</tr>
+		<tr>
+			<td class="first">the subcategory id of the exposure layer</td>
+			<td>exptypeid = self.get_argument('exp_type_id')</td>
+		</tr>
+		<tr>
+			<td class="first">the type id of the hazard layer</td>
+			<td>haztypeid = self.get_argument('haz_type_id')</td>
+		</tr>
+		<tr>
+			<td class="first">the hazard layer type</td>
+			<td>haztype = self.get_argument('haz_type')</td>
+		</tr
+		<tr>
+			<td class="first">the path for the exposure layer
+			</td>
+			<td>query = SQL_EXPOSURE.format(mun_city_psgc=psgc,
+                        subcategory_id=exptypeid)</td>
+		</tr>
+		<tr>
+			<td class="first">Get the exposure type</td>
+			<td>query = SQL_EXPOSURE_TYPE.format(subcategory_id=exptypeid)</td>
+		</tr>
+		<tr>
+			<td class="first">Get the tablename of the hazard layer</td>
+			<td>query = SQL_HAZARD.format(tabname=tabname, mun_city_psgc=psgc, rain_return_event_id=haztypeid)</td>
+		</tr>
+		<tr>
+			<td class="first">This contains the paths to the exposure and hazard maps.</td>
+			<td>layer_paths = { 'exposure':exppath,
+                            'hazard': hazpath }</td>
+		</tr>
+		<tr>
+			<td class="first">Check if the impact layer already exists</td>
+			<td>query = SQL_IMPACT_EXISTS.format(exp=exppath, haz=hazpath)
+            </td>
+		</tr>
+		<tr>
+			<td class="first">Proceeds with calculation by calling InaSAFE API.</td>
+			<td>response = (yield gen.Task(calculate.apply_async, args=[layer_paths, haztype, exptype])).result</td>
+		</tr>
+		<tr>
+			<td class="first">This contains the summary that will be displayed in the WebSAFE module.</td>
+			<td>impact_summary = response['summary']</td>
+		</tr>
+		<tr>
+			<td class="first">This is a dictionary that contains factors that need postprocessing.</td>
+			<td>                    req_postproc = {
+                        'Gender': {'on': True},
+                        'Age': {'on': True,
+                                'params': {
+                                    'young_ratio':float(rec['young_ratio']),
+                                    'adult_ratio':float(rec['adult_ratio']),
+                                    'elderly_ratio':float(rec['elderly_ratio'])
+                                    }
+                                }
+                        }
+</td>
+		</tr>
+		<tr>
+			<td class="first">These are the postprocessors from the InaSAFE API.</td>
+			<td>postprocessors = postprocessor_factory.get_postprocessors(req_postproc, False)</td>
+		</tr>
+		<tr>
+			<td class="first">These are the parameters to be used in the postprocessing calculation by InaSAFE API.</td>
+			<td>params = {
+                            'young_ratio':float(rec['young_ratio']),
+                            'adult_ratio':float(rec['adult_ratio']),
+                            'elderly_ratio':float(rec['elderly_ratio']),
+                            'female_ratio':float(rec['female_ratio']),
+                            'impact_total': total_impact
+                        }</td>
+		</tr>
+		<tr>
+			<td class="first">These are the results for the gender postprocessing.</td>
+			<td>gender_results = postprocessors['Gender'].results()</td>
+		</tr>
+		<tr>
+			<td class="first">These are the results for the age postprocessing.</td>
+			<td>age_results = postprocessors['Age'].results()</td>
+		</tr>
+	</table>
+</body>
+</html>
