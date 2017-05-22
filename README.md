@@ -1,6 +1,6 @@
 # NOAH Frontend Server
 
-This server will be accessed by the frontend using Ubuntu 12.04
+This server was first installed and tested on Ubuntu 12.04. 
 
 ### Install server dependencies
 
@@ -23,5 +23,6 @@ To restart the server:
 
     $ paver restart
 
+To access the server, go to http://localhost:8080
 
 
