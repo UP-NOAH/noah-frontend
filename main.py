@@ -32,8 +32,6 @@ from download.download_handler import DownloadHandler
 from mosquito.mosquito_handler import MosquitoHandler
 from storm_track.storm_track_handler import TrackHandler
 from sensors.sensor_monitoring_handler import SensorMonitoringHandler
-from prins.prins_handler import PrinsHandler
-from prins.prins_wrf_handler import PrinsWrfHandler
 from weather.weather_handler import SevenDayWeatherHandler
 
 define("port", default=8080, help="run on the given port", type=int)
@@ -92,8 +90,6 @@ application = tornado.web.Application([
         (r'/mosquito/(all|ovindex)', MosquitoHandler),
         (r'/stormtrack', TrackHandler),
         (r'/sensor-monitoring', SensorMonitoringHandler),
-        (r'/prins', PrinsHandler),
-        (r'/prins-wrf', PrinsWrfHandler),
         (r'/sevenday/(\d+)', SevenDayWeatherHandler),
         (r'/', IndexHandler)
 	], **settings
