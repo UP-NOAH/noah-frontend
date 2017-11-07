@@ -25,4 +25,4 @@ To restart the server:
 
 To access the server, go to http://localhost:8080
 
-
+For a copy of config.py please contact info@noah.up.edu.ph
