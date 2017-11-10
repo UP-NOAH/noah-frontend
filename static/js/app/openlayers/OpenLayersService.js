@@ -479,7 +479,7 @@ module.factory('Sensors', ['$rootScope', function($rootScope){
     }
 
     factory.graph = function(feature) {
-        var ws = new WebSocket("ws://#####" + feature.get('url'));
+        var ws = new WebSocket("ws://202.90.159.176:8080" + feature.get('url'));
 
         ws.onmessage = function(event) {
             //console.log(event.data);
