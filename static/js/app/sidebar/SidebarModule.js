@@ -477,7 +477,7 @@ module.controller('Menu1Ctrl', [
 
             var hazard_layer = new ol.layer.Tile({
                 source: new ol.source.TileWMS({
-                url: '#####',
+                url: 'http://geoserver.noah.dost.gov.ph/geoserver/wms?',
                 params: {
                     'LAYERS': $scope.component.layer,
                     'TILED': true,

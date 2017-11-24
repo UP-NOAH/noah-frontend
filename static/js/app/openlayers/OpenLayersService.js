@@ -1345,7 +1345,7 @@ module.factory('Layers', ['$rootScope', '$routeParams', '$interval', function($r
         if ($rootScope.hazardMaps[hazard_name] == undefined) {
             var floodLayer = new ol.layer.Tile({
                 source: new ol.source.TileWMS({
-                    url: 'http://#####'+workspace+'/wms',
+                    url: 'http://geoserver.noah.dost.gov.ph/geoserver/'+workspace+'/wms',
                     params: {'LAYERS': component.geoserver_layer, 'TILED': true},
                     //crossOrigin: 'anonymous'
                 }),
@@ -1354,7 +1354,7 @@ module.factory('Layers', ['$rootScope', '$routeParams', '$interval', function($r
 
             var bgyLayer = new ol.layer.Tile({
                 source: new ol.source.TileWMS({
-                    url: 'http://#####'+bgy_workspace+'/wms',
+                    url: 'http://geoserver.noah.dost.gov.ph/geoserver/'+bgy_workspace+'/wms',
                     params: {'LAYERS': bgycomponent, 'TILED': true},
                     //crossOrigin: 'anonymous'
                 }),
@@ -1363,7 +1363,7 @@ module.factory('Layers', ['$rootScope', '$routeParams', '$interval', function($r
 
             var munLayer = new ol.layer.Tile({
                 source: new ol.source.TileWMS({
-                    url: 'http://#####'+mun_workspace+'/wms',
+                    url: 'http://geoserver.noah.dost.gov.ph/geoserver/'+mun_workspace+'/wms',
                     params: {'LAYERS': muncomponent, 'TILED': true},
                     //crossOrigin: 'anonymous'
                 }),
